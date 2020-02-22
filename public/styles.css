@@ -4,68 +4,27 @@ body{
 }
 
 .header{
-  padding:2px;
+
+  align-items: top;
   width:100%;
   height:100px;
-  background-color: hsl(60, 15%, 10%);
-  border-radius:1px;
+  background: rgba(0,0,0, .8);
+  box-sizing: border-box;
   box-shadow: 0px 5px 10px 0px 	 #1a1a1a;
 
 }
 
 .beans{
   color:white;
-  text-align:center;
+  text-align:left;
+  padding:5px 0 0  15px;
+  margin:0;
+
 }
 
 .hidenav{
   display:none;
 }
-
-
-
-
-
-
-
-
-ul{
-  list-style-type: none;
-  margin:10px;
-  padding:0;
-  position: relative;
-
-}
-
-.menuP{
-  color:gray;
-  text-align:center;
-}
-
-button{
-  padding:10px 10px 10px 10px;
-  width:100%;
-  outline:none;
-  background-color: hsl(60, 15%, 10%);
-  color:white;
-  border:none;
-
-
-}
-
-button:hover{
-  background-color: hsl(60, 15%, 40%);
-  border-radius: 10px;
-
-}
-
-button:active{
-
-  outline-color: red;
-}
-
-
-
 .footer{
   height:2rem;
   bottom:10px;
@@ -73,50 +32,7 @@ button:active{
   position:absolute;
   width:100%;
   text-align:center;
-
-
 }
 .copy{
-  color:hsl(60, 15%, 10%);
-}
-
-.table-header {
-  margin:0;
-  padding:0;
-  display:grid;
-  border:solid 1px black;
-  color:white;
-  border-radius:3px;
-  align-items: center;
-  text-align: center;
-  grid-template-columns: repeat(7, 1fr);
-  background-color:hsl(60, 15%, 10%);
-
-}
-
-.input-box {
-  display:grid;
-  grid-template-columns: repeat(7, fit-content(100%));
-  align-items: center;
-
-}
-
-.lunch{
-  width:97%;
-  height:20px;
-}
-
-.input-container{
-  width:95%;
-  height:100px;
-
-}
-
-.container{
-  margin-left: 250px;
-  width:80%;
-  box-shadow: 10px 10px 10px 10px #1a1a1a;
-  broder:solid 5px;
-  border-radius: 10px;
-  height:100px;
+  color:#fff;
 }

@@ -23,7 +23,7 @@ body{
   margin:0 0 30px;
   padding: 0;
   color:#fff;
-  color:darkseagreen;
+
   text-align:center;
 }
 
@@ -54,6 +54,8 @@ body{
   transition: .5s;
 }
 
+
+
 .submit-btn{
   background:transparent;
   border:none;
@@ -63,4 +65,9 @@ body{
   padding:10px 20px;
   cursor:pointer;
   border-radius: 5px;
+}
+
+.submit-btn:hover{
+  background-color:pink;
+  color:purple;
 }
