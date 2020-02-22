@@ -9,7 +9,7 @@ function Login(){
   return(
   <div>
       <div className='box'>
-        <h2 className='login-h2'>Login here</h2>
+        <h2 className='login-h2'>Login</h2>
         <form >
           <div className="input-box">
             <input type='text' placeholder="Enter Username" required=""></input>
