@@ -5,20 +5,14 @@ import Nav from './Nav';
 import Table from './Table';
 import Login from "./LoginPage/Login"
 
+function App() {
 
-
-function App(){
-
-
-
-return(<div>
-  <Header />
-  <Nav />
-  <Login />
-  <Footer />
-</div>
-
-)
+  return (<div>
+    <Header/>
+    <Nav/>
+    <Login/>
+    <Footer/>
+  </div>)
 
 };
 
