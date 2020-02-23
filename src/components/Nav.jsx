@@ -1,21 +1,21 @@
 import React from 'react';
 
 
+import Table from './Table';
+
 
 
 
 
 
 function Nav(){
+
+
 return (
   <div>
-    <nav >
-      <p className='menuP'>Menu</p>
-      <hr></hr>
+    <nav className="navigation" >
         <ul>
-          <li><button>Create Menu</button></li>
-          <li><button>Archived Menus</button></li>
-          <li><button>Recipe Links</button></li>
+          
         </ul>
     </nav>
   </div>
