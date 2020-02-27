@@ -1,8 +1,30 @@
 import React from 'react';
+import Footer from '../Footer';
+import Table from '../Table';
+
 
 function Login() {
 
-  return (<div>
+const LoginStyle = {
+
+    position:'auto',
+    width: '100%',
+    height:'703px',
+    backgroundImage: `url('../Images/burgerImg.jpg')`,
+    backgroundSize: "cover"
+  }
+
+function handleClick(e){
+return(<div>
+  <Table />
+  <Footer />
+</div>
+)
+e.preventDefault();
+};
+
+  return (<div style={LoginStyle}>
+
     <div className='box'>
       <h2 className='login-h2'>Login Here</h2>
       <form >
@@ -14,7 +36,7 @@ function Login() {
           <input type="password" placeholder="Enter Password" required=""></input>
 
         </div>
-        <input className='submit-btn' type="submit" name="" value="submit"></input>
+        <input onClick={handleClick} className='submit-btn' type="submit" name="" value="submit"></input>
       </form>
 
     </div>

@@ -7,11 +7,12 @@ import Login from "./LoginPage/Login"
 
 function App() {
 
-  return (<div>
-    <Header/>
-    <Nav/>
-    <Login/>
-    <Footer/>
+  return (<div >
+
+
+    <Header />
+    <Login />
+
   </div>)
 
 };
