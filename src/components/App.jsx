@@ -9,9 +9,8 @@ function App() {
 
   return (<div >
 
-
-    <Header />
-    <Login />
+    <Header/>
+    <Login/>
 
   </div>)
 
