@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../Footer';
 import Table from '../Table';
 
-function Login() {
+function Login(props) {
 
   const LoginStyle = {
 
@@ -13,13 +13,7 @@ function Login() {
     backgroundSize: "cover"
   }
 
-  function handleClick(e) {
-    return (<div>
-      <Table/>
-      <Footer/>
-    </div>)
-    e.preventDefault();
-  };
+
 
   return (<div style={LoginStyle}>
 
@@ -34,7 +28,7 @@ function Login() {
           <input type="password" placeholder="Enter Password" required=""></input>
 
         </div>
-        <input onClick={handleClick} className='submit-btn' type="submit" name="" value="submit"></input>
+        <input className='submit-btn' type="submit" name="" value="submit"></input>
       </form>
 
     </div>
