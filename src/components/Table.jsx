@@ -1,91 +1,67 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Days from './Days/Days';
 
-function Table() {
-  const date = new Date().getMonth();
+function Table(props) {
+  const date = new Date();
+  const getDay = date.getDate();
+  const month = date.getMonth();
+  const currentDay = date.getDay();
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const dayName = [
+    'Sun',
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat'
+  ];
 
-  console.log(date);
+  const namedMonth = months[month];
+  const dynaDay = dayName[currentDay];
+
+  const [currentDate, setCurrentDate] = useState(namedMonth);
+  const [lunchInput, setLunchInput] = useState("");
+
+  let handleDayLoop = () => {}
+
+  let handleKeyDown = (event) => {
+    const newValue = event.target.value
+    if (event.keyCode == 13) {}
+
+  }
+
+  const lunchInputHandler = (event) => {
+    const {name, value} = event.target;
+    setLunchInput(prevValue => {
+      return {
+        ...prevValue,
+        [name]: value
+      }
+    })
+    console.log(name)
+    console.log(value)
+  }
 
   return (<div>
     <div className="container">
+      <form >
+        {dayName.map((value, i) => (<Days key={i} currentDates={currentDate} lunchInput={lunchInputHandler} dayNames={dayName[i]} getDates={getDay}></Days>))}
 
-      <div className='sun'>
-        <h2>Sunday</h2>
-        <h4>Lunch</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-        <h4>Dinner</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-      </div>
-      <div className='sun'>
-        <h2>Monday</h2>
-        <h4>Lunch</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-        <h4>Dinner</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-      </div>
-      <div className='sun'>
-        <h2>Tuesday</h2>
-        <h4>Lunch</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-        <h4>Dinner</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-      </div>
-      <div className='sun'>
-        <h2>Wednesday</h2>
-        <h4>Lunch</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-        <h4>Dinner</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-      </div>
-      <div className='sun'>
-        <h2>Thursday</h2>
-        <h4>Lunch</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-        <h4>Dinner</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-      </div>
-      <div className='sun'>
-        <h2>Friday</h2>
-        <h4>Lunch</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-        <h4>Dinner</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-      </div>
-      <div className='sun'>
-        <h2>Saturday</h2>
-        <h4>Lunch</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-
-        <h4>Dinner</h4>
-        <input placeholder='Entre' type='text'/>
-        <hr/>
-        <textarea placeholder='Side' type='text'/>
-      </div>
+      </form>
     </div>
   </div>)
 
