@@ -1,28 +1,12 @@
 import React from 'react';
 
+function Nav() {
 
-import Table from './Table';
-
-
-
-
-
-
-function Nav(){
-
-
-return (
-  <div>
-    <nav className="navigation" >
-        <ul>
-          
-        </ul>
+  return (<div>
+    <nav className="navigation">
+      <ul></ul>
     </nav>
-  </div>
-
-
-  )
+  </div>)
 }
-
 
 export default Nav;

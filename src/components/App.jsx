@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Nav from './Nav';
-import Table from './Table';
+import Week from './Month/Week/Week';
 import Login from "./LoginPage/Login"
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   return (<div >
 
     <Header/>
-    <Table />
+    <Week />
 
   </div>)
 
