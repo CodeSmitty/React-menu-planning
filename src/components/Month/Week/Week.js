@@ -9,10 +9,9 @@ function Table(props, year, months) {
   const [lunchInput, setLunchInput] = useState({
     title:"",
     content:""
-  })
+  });
 
-  
-
+  let note = [];
   let week = [];
   let day = startOfWeek;
 
