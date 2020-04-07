@@ -6,10 +6,7 @@ import moment from 'moment';
 function Table(props, year, months) {
   const startOfWeek = moment().startOf("week");
   const endOfWeek = moment().endOf("week");
-  const [lunchInput, setLunchInput] = useState({
-    title:"",
-    content:""
-  });
+  const [meal, setMeal] = useState([]);
 
   let note = [];
   let week = [];
@@ -22,43 +19,47 @@ function Table(props, year, months) {
 
 
 
-  let handleDayLoop = (props) => {}
-
   let handleKeyDown = (event) => {
     const newValue = event.target.value
     if (event.keyCode == 13) {}
 
   }
 
-  const handleChange = (event) => {
-    const {name, value} = event.target;
-    setLunchInput(prevValue => {
-      return {
-        ...prevValue,
-        [name]: value
-      };
-    });
-
+  function submitMeal(newMeal){
+    setMeal(prevMeal =>{
+      return [...prevMeal, newMeal];
+    })
   }
-
-console.log(lunchInput.title)
 
   return (<div>
     <div className="container">
-      <form >
-        {week.map((day, i) => (<Day
+
+        {week.map((day, i) =>{
+          const lunch = moment(day).format('dddd') + '_title';
+
+           return (<Day
           key={i}
           id={i}
-          titles={'title'}
+          entre={day.entre}
+          onAdded={submitMeal}
           getCurrDates={day.getDate()}
-          val={lunchInput.title}
-          changed={handleChange}
           currMonths={moment(day).format('MMM')}
-          dayNames={moment(day).format("dddd")}></Day>))}
+          dayNames={moment(day).format("dddd")}></Day>);
 
-      </form>
+        })}
+
+
     </div>
   </div>)
 
 }
 export default Table;
+
+
+
+//key={i}
+//id={day.id}
+//titles={lunch}
+//getCurrDates={day.getDate()}
+//val={lunchInput[lunch] || ""}
+//changed={handleChange}//

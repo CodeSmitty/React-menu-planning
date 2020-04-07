@@ -4,19 +4,16 @@ import Lunch from './Lunch';
 import Card from '../../Card/Card';
 import Dinner from './Dinner';
 
-
 const Day = (props) => (<div className='sun'>
 
   <Card>
-    <Lunch dayName={props.dayNames}
-      values={props.val}
-      onChanges={props.changed}
+    <Lunch
+      dayName={props.dayNames}
+      onAdd={props.onAdded}
       currMonth={props.currMonths}
-      lunchTime={props.lunchTimes}
-      getCurrDate={props.getCurrDates}
-      titleName={props.titles}
-    />
-    <Dinner />
+      entres={props.entre}
+      getCurrDate={props.getCurrDates}/>
+    <Dinner/>
   </Card>
 </div>);
 
