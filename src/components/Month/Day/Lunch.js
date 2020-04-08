@@ -24,7 +24,10 @@ const submitLunch = (e) => {
     side: ""
   });
   e.preventDefault();
+  
 }
+
+
 
 return(<div>
   <h2>{props.dayName} <br/>{props.currMonth}  {props.getCurrDate}</h2>
@@ -42,8 +45,8 @@ return(<div>
     placeholder='Side' type='text'/>
   <button onClick={submitLunch}>x</button>
 </form>
-  <p>{props.entres}</p>
-  
+  <p>{props.entre}</p>
+
 </div>
 )
 

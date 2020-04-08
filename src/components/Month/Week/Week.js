@@ -26,6 +26,7 @@ function Table(props, year, months) {
   }
 
   function submitMeal(newMeal){
+    alert('hello')
     setMeal(prevMeal =>{
       return [...prevMeal, newMeal];
     })
@@ -40,7 +41,7 @@ function Table(props, year, months) {
            return (<Day
           key={i}
           id={i}
-          entre={day.entre}
+          entres={day.entre}
           onAdded={submitMeal}
           getCurrDates={day.getDate()}
           currMonths={moment(day).format('MMM')}

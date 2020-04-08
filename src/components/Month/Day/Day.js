@@ -11,7 +11,7 @@ const Day = (props) => (<div className='sun'>
       dayName={props.dayNames}
       onAdd={props.onAdded}
       currMonth={props.currMonths}
-      entres={props.entre}
+      entre={props.entres}
       getCurrDate={props.getCurrDates}/>
     <Dinner/>
   </Card>
