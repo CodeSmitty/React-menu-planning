@@ -1,8 +1,22 @@
 import React from 'react';
+import Footer from '../Footer';
+import Week from '../Month/Week/Week';
 
-function Login() {
+function Login(props) {
 
-  return (<div>
+  const LoginStyle = {
+
+    position: 'auto',
+    width: '100%',
+    height: '703px',
+    backgroundImage: `url('../Images/burgerImg.jpg')`,
+    backgroundSize: "cover"
+  }
+
+
+
+  return (<div style={LoginStyle}>
+
     <div className='box'>
       <h2 className='login-h2'>Login Here</h2>
       <form >

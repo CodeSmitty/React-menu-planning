@@ -1,13 +1,12 @@
 import React from 'react';
 
-function Header(){
+function Header() {
 
-return(  <div className='header'>
-    <h1 className='beans' >Beans & <br/>Cornbread</h1>
+  return (<div className='header'>
+    <h1 className='beans'>Beans &
+      <br/>Cornbread</h1>
 
-
-  </div>
-)
+  </div>)
 
 };
 

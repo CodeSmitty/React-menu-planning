@@ -2,16 +2,16 @@ import React, {useState} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Nav from './Nav';
-import Table from './Table';
+import Week from './Month/Week/Week';
 import Login from "./LoginPage/Login"
 
 function App() {
 
-  return (<div>
+  return (<div >
+
     <Header/>
-    <Nav/>
-    <Login/>
-    <Footer/>
+    <Week />
+
   </div>)
 
 };
