@@ -18,21 +18,22 @@ const handleChange = (e)=>{
 };
 
 const submitLunch = (e) => {
+  e.preventDefault();
   props.onAdd(lunch);
   setLunch({
     entre: "",
     side: ""
   });
-  e.preventDefault();
-  
+
+
 }
 
 
 
-return(<div>
+return(<div onChange={handleChange}>
   <h2>{props.dayName} <br/>{props.currMonth}  {props.getCurrDate}</h2>
   <h4>Lunch</h4>
-  <form>
+<form onSubmit={submitLunch}>
   <input placeholder='Entre'
     name='entre'
     onChange={handleChange}
@@ -43,9 +44,9 @@ return(<div>
     onChange={handleChange}
     value={lunch.side}
     placeholder='Side' type='text'/>
-  <button onClick={submitLunch}>x</button>
+  <button type='submit' onClick={submitLunch}>x</button>
 </form>
-  <p>{props.entre}</p>
+  <div>{props.entre}</div>
 
 </div>
 )

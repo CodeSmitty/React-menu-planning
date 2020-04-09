@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import Day from '../Day/Day';
-import Moment from 'react-moment';
+import Card from '../../Card/Card';
 import moment from 'moment';
+
 
 function Table(props, year, months) {
   const startOfWeek = moment().startOf("week");
   const endOfWeek = moment().endOf("week");
   const [meal, setMeal] = useState([]);
 
-  let note = [];
+
   let week = [];
   let day = startOfWeek;
+
 
   while (day <= endOfWeek) {
     week.push(day.toDate());
@@ -26,11 +28,11 @@ function Table(props, year, months) {
   }
 
   function submitMeal(newMeal){
-    alert('hello')
-    setMeal(prevMeal =>{
-      return [...prevMeal, newMeal];
+
+     setMeal(prevMeal =>{
+      return [...prevMeal, newMeal]
     })
-  }
+}
 
   return (<div>
     <div className="container">
@@ -38,14 +40,20 @@ function Table(props, year, months) {
         {week.map((day, i) =>{
           const lunch = moment(day).format('dddd') + '_title';
 
-           return (<Day
-          key={i}
-          id={i}
-          entres={day.entre}
-          onAdded={submitMeal}
-          getCurrDates={day.getDate()}
-          currMonths={moment(day).format('MMM')}
-          dayNames={moment(day).format("dddd")}></Day>);
+           return (
+          <Card>
+             <Day
+               key={i}
+               id={i}
+
+               titles={lunch}
+               entres={meal.map((meals, index) => {return meals.entre})}
+               onAdded={submitMeal}
+               getCurrDates={day.getDate()}
+               currMonths={moment(day).format('MMM')}
+               dayNames={moment(day).format("dddd")}></Day>
+          </Card>
+    );
 
         })}
 
