@@ -1,22 +1,22 @@
-import React from 'react';
-import Lunch from './Lunch';
-import Card from '../../Card/Card';
-import Dinner from './Dinner';
+import React from "react";
+import Lunch from "./Lunch";
+import Card from "../../Card/Card";
+import Dinner from "./Dinner";
 
-const Day = (props) => (<div className='sun'>
+const Day = (props) => (
+  <div className="sun">
+    <Card>
+      <Lunch
+        dayName={props.dayNames}
+        onAdd={props.onAdded}
+        currMonth={props.currMonths}
+        entre={props.entres}
+        getCurrDate={props.getCurrDates}
+      />
 
-  <Card>
-    <Lunch
-      dayName={props.dayNames}
-      onAdd={props.onAdded}
-      currMonth={props.currMonths}
-      entre={props.entres}
-      getCurrDate={props.getCurrDates}
-      
-    />
-
-    <Dinner/>
-  </Card>
-</div>);
+      <Dinner />
+    </Card>
+  </div>
+);
 
 export default Day;
