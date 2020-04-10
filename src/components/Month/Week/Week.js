@@ -22,7 +22,7 @@ const Week = props => {
           const dayName = moment(day).format("dddd");
           return (
             <Day
-              key={dayName}
+              key={"day" + i}
               dayName={dayName}
               dayDate={day.getDate()}
               dayMonth={moment(day).format("MMM")}

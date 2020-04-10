@@ -1,21 +1,20 @@
 import React from "react";
 import Lunch from "./Lunch";
-import Card from "../../Card/Card";
 import Dinner from "./Dinner";
 
 const Day = props => (
   <div className="sun">
-    <Card>
-      <Lunch
-        dayName={props.dayName}
-        getCurrDate={props.dayDate}
-        currMonth={props.dayMonth}
-        entre={props.entres}
-        onAdd={props.onSubmit}
-      />
+    <h2>
+      {props.dayName} <br />
+      {props.dayMonth} {props.dayDate}
+    </h2>
+    <Lunch
+      dayName={props.dayName}
+      entres={props.entres}
+      onAdd={props.onSubmit}
+    />
 
-      <Dinner />
-    </Card>
+    <Dinner />
   </div>
 );
 

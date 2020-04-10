@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Lunch = (props) => {
   const [lunch, setLunch] = useState({
+    day: props.dayName,
     entre: "",
     side: "",
   });
@@ -20,17 +21,14 @@ const Lunch = (props) => {
     e.preventDefault();
     props.onAdd(lunch);
     setLunch({
+      day: props.dayName,
       entre: "",
       side: "",
     });
   };
 
   return (
-    <div onChange={handleChange}>
-      <h2>
-        {props.dayName} <br />
-        {props.currMonth} {props.getCurrDate}
-      </h2>
+    <div>
       <h4>Lunch</h4>
       <form onSubmit={submitLunch}>
         <input
@@ -51,7 +49,7 @@ const Lunch = (props) => {
           x
         </button>
       </form>
-      <div>{props.entre}</div>
+      <div>{props.entres.filter(entre => entre.day === props.dayName)}</div>
     </div>
   );
 };
