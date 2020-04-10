@@ -49,7 +49,7 @@ const Lunch = (props) => {
           x
         </button>
       </form>
-      <div>{props.entres.filter(entre => entre.day === props.dayName)}</div>
+      <div>{props.entres}</div>
     </div>
   );
 };

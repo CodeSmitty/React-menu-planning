@@ -20,13 +20,17 @@ const Week = props => {
         {week.map((day, i) => {
           // ex: Sunday, Monday, Tuesday...
           const dayName = moment(day).format("dddd");
+          const dayMeals = meals.filter((meal) => {
+            return meal.day === dayName;
+          })
+
           return (
             <Day
               key={"day" + i}
               dayName={dayName}
               dayDate={day.getDate()}
               dayMonth={moment(day).format("MMM")}
-              entres={meals.map((meal, index) => {
+              entres={dayMeals.map((meal, index) => {
                 return meal.entre;
               })}
               onSubmit={submitMeal}
