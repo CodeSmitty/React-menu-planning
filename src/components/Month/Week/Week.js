@@ -58,3 +58,35 @@ function getCurrentWeek() {
 }
 
 export default Week;
+
+// API
+// [
+//   {
+//     date: 2020-04-05,
+//     service_type: lunch,
+//     menu_items: [
+//       {
+//         name: Ham,
+//         type: entree
+//       },
+//       {
+//         name: Eggs,
+//         type: side
+//       }
+//     ]
+//   },
+//   {
+//     date: 2020-04-07,
+//     service_type: dinner,
+//     menu_items: [
+//       {
+//         name: Steak,
+//         type: entree
+//       },
+//       {
+//         name: Potatoes,
+//         type: side
+//       }
+//     ]
+//   }
+// ]
