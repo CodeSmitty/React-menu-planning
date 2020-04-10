@@ -3,7 +3,7 @@ import Day from "../Day/Day";
 import Card from "../../Card/Card";
 import moment from "moment";
 
-function Table(props, year, months) {
+const Week = (props) => {
   const startOfWeek = moment().startOf("week");
   const endOfWeek = moment().endOf("week");
   const [meal, setMeal] = useState([]);
@@ -16,11 +16,11 @@ function Table(props, year, months) {
     day = day.clone().add(1, "d");
   }
 
-  let handleKeyDown = (event) => {
-    const newValue = event.target.value;
-    if (event.keyCode == 13) {
-    }
-  };
+  // let handleKeyDown = (event) => {
+    // const newValue = event.target.value;
+    // if (event.keyCode == 13) {
+    // }
+  // };
 
   function submitMeal(newMeal) {
     setMeal((prevMeal) => {
@@ -55,7 +55,7 @@ function Table(props, year, months) {
     </div>
   );
 }
-export default Table;
+export default Week;
 
 //key={i}
 //id={day.id}
