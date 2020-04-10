@@ -1,12 +1,46 @@
 import React, { useState } from "react";
 import Day from "../Day/Day";
-import Card from "../../Card/Card";
 import moment from "moment";
 
-const Week = (props) => {
+const Week = props => {
+  const [meals, addMeal] = useState([]);
+
+  let week = getCurrentWeek();
+
+  function submitMeal(newMeal) {
+    addMeal(prevMeals => {
+      return [...prevMeals, newMeal];
+    });
+  }
+
+  console.log(meals);
+  return (
+    <div>
+      <div className="container">
+        {week.map((day, i) => {
+          // ex: Sunday, Monday, Tuesday...
+          const dayName = moment(day).format("dddd");
+          return (
+            <Day
+              key={dayName}
+              dayName={dayName}
+              dayDate={day.getDate()}
+              dayMonth={moment(day).format("MMM")}
+              entres={meals.map((meal, index) => {
+                return meal.entre;
+              })}
+              onSubmit={submitMeal}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+function getCurrentWeek() {
   const startOfWeek = moment().startOf("week");
   const endOfWeek = moment().endOf("week");
-  const [meal, setMeal] = useState([]);
 
   let week = [];
   let day = startOfWeek;
@@ -16,50 +50,7 @@ const Week = (props) => {
     day = day.clone().add(1, "d");
   }
 
-  // let handleKeyDown = (event) => {
-    // const newValue = event.target.value;
-    // if (event.keyCode == 13) {
-    // }
-  // };
-
-  function submitMeal(newMeal) {
-    setMeal((prevMeal) => {
-      return [...prevMeal, newMeal];
-    });
-  }
-
-  return (
-    <div>
-      <div className="container">
-        {week.map((day, i) => {
-          const lunch = moment(day).format("dddd") + "_title";
-
-          return (
-            <Card>
-              <Day
-                key={i}
-                id={i}
-                titles={lunch}
-                entres={meal.map((meals, index) => {
-                  return meals.entre;
-                })}
-                onAdded={submitMeal}
-                getCurrDates={day.getDate()}
-                currMonths={moment(day).format("MMM")}
-                dayNames={moment(day).format("dddd")}
-              ></Day>
-            </Card>
-          );
-        })}
-      </div>
-    </div>
-  );
+  return week;
 }
-export default Week;
 
-//key={i}
-//id={day.id}
-//titles={lunch}
-//getCurrDates={day.getDate()}
-//val={lunchInput[lunch] || ""}
-//changed={handleChange}//
+export default Week;

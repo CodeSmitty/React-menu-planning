@@ -3,15 +3,15 @@ import Lunch from "./Lunch";
 import Card from "../../Card/Card";
 import Dinner from "./Dinner";
 
-const Day = (props) => (
+const Day = props => (
   <div className="sun">
     <Card>
       <Lunch
-        dayName={props.dayNames}
-        onAdd={props.onAdded}
-        currMonth={props.currMonths}
+        dayName={props.dayName}
+        getCurrDate={props.dayDate}
+        currMonth={props.dayMonth}
         entre={props.entres}
-        getCurrDate={props.getCurrDates}
+        onAdd={props.onSubmit}
       />
 
       <Dinner />
