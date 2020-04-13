@@ -1,9 +1,10 @@
 import React from "react";
 import Lunch from "./Lunch";
 import Dinner from "./Dinner";
+import classes from './Day.module.css'
 
 const Day = props => (
-  <div className="sun">
+  <div className={classes.Sun}>
     <h2>
       {props.dayName} <br />
       {props.dayMonth} {props.dayDate}
@@ -12,9 +13,14 @@ const Day = props => (
       dayName={props.dayName}
       entres={props.entres}
       onAdd={props.onSubmit}
+      sides={props.sides}
     />
-
-    <Dinner />
+    <Dinner
+      dayName={props.dayName}
+      dinnerEntres={props.dinnerEntres}
+      dinnerSides={props.dinnerSides}
+      onAdd={props.onSubmit}
+    />
   </div>
 );
 

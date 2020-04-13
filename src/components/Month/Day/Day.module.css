@@ -1,0 +1,64 @@
+.Back{
+  display: none;
+}
+
+.SubmittedEntre{
+  font-size: 25px;
+}
+
+.SubmittedSide{
+  font-size: 20px;
+  font-weight: 20em;
+}
+
+.Sun {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 180px;
+  margin: 30px auto 30px auto;
+  background: #fff;
+
+  border-radius: 7px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  border: none;
+
+}
+
+input[placeholder] {
+  text-align: center;
+  font-size: 20px;
+}
+
+textarea {
+  width: 98%;
+  border: none;
+}
+
+textarea[placeholder] {
+  text-align: center;
+  font-size: 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.SubButton{
+  font-size: 25px;
+  background-color: maroon;
+  border-radius: 20px;
+  border: solid .5px lightblue;
+  box-shadow: 0px 2px 2px 1px  black;
+
+
+}
+
+.SubButton:hover{
+  background-color: pink;
+  border:solid 1px pink;
+}

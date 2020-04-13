@@ -11,9 +11,10 @@ const Week = props => {
     addMeal(prevMeals => {
       return [...prevMeals, newMeal];
     });
+    console.log(meals)
   }
 
-  console.log(meals);
+
   return (
     <div>
       <div className="container">
@@ -24,6 +25,8 @@ const Week = props => {
             return meal.day === dayName;
           })
 
+
+
           return (
             <Day
               key={"day" + i}
@@ -33,7 +36,17 @@ const Week = props => {
               entres={dayMeals.map((meal, index) => {
                 return meal.entre;
               })}
+              sides={dayMeals.map((meal, index) =>{
+                return meal.side
+              })}
+              dinnerEntres={dayMeals.map((meal, index)=>{
+                return meal.dinner_entre
+              })}
+              dinnerSides={dayMeals.map((meal,index)=>{
+                return meal.dinner_side
+              })}
               onSubmit={submitMeal}
+
             />
           );
         })}
