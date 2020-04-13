@@ -6,7 +6,7 @@ import classes from './Day.module.css'
 
 const Day = props => (
   <div className={classes.Sun}>
-    <h2>
+    <h2 className={classes.Dates}>
       {props.dayName} <br />
       {props.dayMonth} {props.dayDate}
     </h2>

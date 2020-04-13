@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import classes from './Day.module.css'
+import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
+
 
 const Lunch = (props) => {
   const [lunch, setLunch] = useState({day: props.dayName, entre: "", side: ""});
@@ -43,8 +45,9 @@ const Lunch = (props) => {
           className={classes.SubButton}
           type="submit"
           onClick={submitLunch}>
-          +
+          <AddCircleRoundedIcon />
         </button>
+
       </form>
     </div>
     <p className={classes.SubmittedEntre}>{props.entres}</p>

@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+
+* {
+		font-family: "Roboto", Arial, sans-serif;
+}
+
 .Back{
   display: none;
 }
@@ -21,6 +27,10 @@
 
   border-radius: 7px;
   text-align: center;
+}
+
+.Dates{
+  background-color: #ec9f83;
 }
 
 input {
@@ -48,17 +58,59 @@ input:focus {
   outline: none;
 }
 
-.SubButton{
-  font-size: 25px;
-  background-color: maroon;
-  border-radius: 20px;
-  border: solid .5px lightblue;
-  box-shadow: 0px 2px 2px 1px  black;
 
-
+button.SubButton{
+  font-size: 1.5rem;
+  border: none;
+  width:34px;
+  height:34px;
+		color: white;
+		position: relative;
+		border-radius: 50%;
+		padding: 5px;
+		margin: 3px;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+		transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
 }
 
-.SubButton:hover{
-  background-color: pink;
-  border:solid 1px pink;
+ button.SubButton:focus:after{
+  content: "";
+		width: 100%;
+		height: 100%;
+		border: solid 2px;
+		transform: scale(0.8);
+		position: absolute;
+		top: -2px;
+		left: -2px;
+		border-radius: 50%;
+		transition: all 0.3s ease;
+    outline: none;
+}
+
+ button.SubButton:hover:focus:after{
+  transform: scale(1);
+		box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+}
+
+ button.SubButton:focus:hover{
+  background-color: transparent;
+  transform: rotate(90deg);
+  cursor: pointer;
+  box-shadow: none;
+}
+
+button.SubButton, button.SubButton:focus{
+		background-color: #d59acb;
+}
+
+button.SubButton:focus:hover{
+		color: #d59acb;
+}
+
+ button.SubButton:after{
+		border-color: #d59acb;
+}
+
+.Icon{
+
 }
