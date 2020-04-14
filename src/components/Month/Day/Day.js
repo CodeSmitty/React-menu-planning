@@ -5,6 +5,7 @@ import classes from './Day.module.css'
 
 
 const Day = props => (
+  <div className={classes.OutsideContainer}>
   <div className={classes.Sun}>
     <h2 className={classes.Dates}>
       {props.dayName} <br />
@@ -23,6 +24,7 @@ const Day = props => (
       onAdd={props.onSubmit}
     />
   </div>
+</div>
 );
 
 export default Day;

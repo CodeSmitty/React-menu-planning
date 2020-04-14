@@ -17,26 +17,35 @@
   font-weight: 20em;
 }
 
+.OutsideContainer{
+	
+	flex: auto;
+}
+
 .Sun {
   position: relative;
-  display: inline-block;
   float: left;
-  width: 180px;
+  width: 14%;
   margin: 30px auto 30px auto;
-  background: #fff;
-
-  border-radius: 7px;
+  background: transparent	;
+	flex:row;
+	border-radius: 10px;
   text-align: center;
+
 }
 
 .Dates{
   background-color: #ec9f83;
+	margin:auto;
+	padding:10px;
+	border-radius: 10px;
+	opacity: .8;
 }
 
 input {
-  width: 100%;
-  border: none;
-
+  width:100%;
+	border: none;
+	background: transparent
 }
 
 input[placeholder] {
@@ -47,6 +56,7 @@ input[placeholder] {
 textarea {
   width: 98%;
   border: none;
+	background: transparent;
 }
 
 textarea[placeholder] {
@@ -73,7 +83,7 @@ button.SubButton{
 		transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
 }
 
- button.SubButton:focus:after{
+ button.SubButton:after{
   content: "";
 		width: 100%;
 		height: 100%;
@@ -87,23 +97,23 @@ button.SubButton{
     outline: none;
 }
 
- button.SubButton:hover:focus:after{
+ button.SubButton:hover:after{
   transform: scale(1);
 		box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
 }
 
- button.SubButton:focus:hover{
+ button.SubButton:hover{
   background-color: transparent;
   transform: rotate(90deg);
   cursor: pointer;
   box-shadow: none;
 }
 
-button.SubButton, button.SubButton:focus{
+button.SubButton{
 		background-color: #d59acb;
 }
 
-button.SubButton:focus:hover{
+button.SubButton:hover{
 		color: #d59acb;
 }
 
