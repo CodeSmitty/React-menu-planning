@@ -5,6 +5,8 @@
 import React, { useState } from "react";
 import Day from "../Day/Day";
 import moment from "moment";
+import Header from '../../Header';
+import classes from '../Day/Day.module.css';
 
 const Week = props => {
   const [meals, addMeal] = useState([]);
@@ -20,7 +22,7 @@ const Week = props => {
 
 
   return (
-    <div>
+    <div >
       <div className="container">
         {week.map((day, i) => {
           // ex: Sunday, Monday, Tuesday...
