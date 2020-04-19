@@ -1,10 +1,48 @@
 import React, {useState} from "react";
 import classes from './Day.module.css'
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
-
+import mealsReducer from '../../MealsHook/MealsHook'
 
 const Lunch = (props) => {
   const [lunch, setLunch] = useState({day: props.dayName, entre: "", side: ""});
+
+
+  const [practice, setPractice] = useState({
+    service_type:{
+      lunch:{
+        date:'',
+        day:props.dayName,
+        service_type_id: 1,
+        meal_items:[
+          {
+            type:{
+              entre:{
+                meal_items_id:1,
+                title:"",
+                menu_items:[]
+              },
+                side:{
+                  entre:{
+                    meal_items_id:1,
+                    title:'I love you',
+                    menu_items:[]
+                  }
+                }
+              }
+            }
+        ]
+      }
+    }
+  }
+  );
+
+
+
+
+//console.log(practice.service_type.lunch.meal_items[0].type.entre.title);
+
+
+
 
   const [hideForm, setHideForm] = useState({hidden: false})
 
@@ -16,6 +54,8 @@ const Lunch = (props) => {
         [name]: value
       };
     });
+
+    console.log(lunch)
   };
 
   const submitLunch = (e) => {
@@ -24,6 +64,9 @@ const Lunch = (props) => {
     hideForm.hidden = true;
     setLunch({day: props.dayName, entre: "", side: ""});
   };
+
+
+
 
   return (<div>
     <h4 >Lunch</h4>
@@ -47,6 +90,8 @@ const Lunch = (props) => {
           onClick={submitLunch}>
           <AddCircleRoundedIcon />
         </button>
+
+        <input type="text" name='name' value={practice.name}  placeholder='practice' />
 
       </form>
     </div>
