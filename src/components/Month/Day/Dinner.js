@@ -24,7 +24,7 @@ const Dinner = (props) => {
   const submitDinner = (e) => {
     e.preventDefault();
     props.onAdd(dinner);
-    hideForm.hidden = true;
+    setHideForm({hiddent:true})
     setDinner({
       day: props.dayName,
       dinner_entre: "",

@@ -1,69 +1,90 @@
 
+import moment from 'moment';
+import uuid from 'uuid';
 
 
-const initialState = [
-  {date:"",
-    service_type: 'lunch',
-    service_type_id: '',
-    menu_items:[
-      {
-        menu_items_id:'',
-        name:"steak",
-        type:'entre',
-        meal_diets:[
-          {
-            diet_id:'',
-            diets: ['vegetarian', 'gluten_free', 'dairy_free', 'vegan']
+const date = moment().format("MMM Do YY");
+
+const mealService = {
+  service_type: {
+    lunch: {
+      date: '',
+      day: '',
+      service_type_id: 1,
+      meal_items: [
+        {
+          type: {
+            entre: {
+              meal_items_id: 1,
+              title: "",
+              menu_items: []
+            },
+            side: {
+              entre: {
+                meal_items_id: 1,
+                title: 'I love you',
+                menu_items: []
+              }
+            }
           }
-        ]
-      },
-      {
-        menu_items_id:1,
-        name:"Mash",
-        type:'side',
-        meal_diets:[
-          {
-            diet_id:1,
-            diets:['vegetarian', 'gluten_free', 'dairy_free', 'vegan']
-          }
-        ]
-      }
-    ]
-  },
-  {date:"",
-    service_type: 'dinner',
-    menu_items:[
-      {
-        menu_items_id:1,
-        name:"",
-        type:'entre',
-        meal_diets:[
-          {
-            diet_id:1,
-            diets:['vegetarian', 'gluten_free', 'dairy_free', 'vegan']
-          }
-        ]
-      },
-      {
-        menu_items_id:1,
-        name:"",
-        type:'side',
-        meal_diets:[
-          {
-            diet_id:1,
-            diets:['vegetarian', 'gluten_free', 'dairy_free', 'vegan']
-          }
-        ]
-      }
-    ]
+        }
+      ]
+    }
   }
-]
+};
 
-const mealsReducer = (curMealState, action) =>{
+const initialState = {
+  service_type: null,
+  id: null,
+  lunch: null,
+  meal_items_id: null,
+  date: null,
+  entre: null,
+  side: null,
+  meal_items: [],
+  meal_items_id:null,
+  identifier:null
 
+}
+
+const mealsReducer = (state, action) =>{
+  switch(action.type){
+    case 'ADD_LUNCH':
+      return{
+        ...state,
+        service_type: 'lunch',
+        entre: action.entre,
+        side: action.side,
+        id: uuid.v4(),
+        date: date,
+        identifier:action.identifier,
+        meal_items:[
+          {
+          meal_items_id:uuid.v4(),
+          entre:action.entre
+          },
+          {
+            meal_items_id:uuid.v4(),
+            side:[action.side]
+          }
+        ]
+      }
+    default:
+    return new Error ('Should not have made it here')
+  }
+}
+
+const useLunchReducer = () => {
+
+  return {
+    mealsReducer:mealsReducer,
+    initialState:initialState,
+    mealService:mealService
+        }
 
 
 
 }
 
-export default mealsReducer;
+
+export default useLunchReducer;
