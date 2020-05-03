@@ -14,6 +14,7 @@ const Week = props => {
         newMeal
       ];
     });
+
   }
 
   return (<div >

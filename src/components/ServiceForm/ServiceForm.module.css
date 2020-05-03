@@ -1,0 +1,17 @@
+.Day{
+  font-size: 16px;
+  width:9%;
+  margin: 0;
+  padding: 1px;
+  display: inline-block;
+  text-align: center;
+  display: flex;
+
+}
+
+.Title{
+  flex:1;
+  padding:0;
+  margin: 0;
+  text-align: center;
+}
