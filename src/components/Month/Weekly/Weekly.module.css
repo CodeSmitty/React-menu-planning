@@ -14,8 +14,6 @@ background-color: #ebf5f5;
   border-radius: 5px;
 }
 
-
-
 .DaysContainer{
   font-family:sans-serif,fantasy;
   border-top-left-radius: 10px;
@@ -29,7 +27,29 @@ background-color: #ebf5f5;
 
 }
 
-.ServiceContainer{
+.LunchContainer{
+  display: block;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  box-shadow: inset 1px 0px 9px -1px rgba(20, 60, 90, .9);
+  background-color: #fff;
+  width:100%;
+  height:auto;
+  min-height: 150px;
+  max-height:150px;
+  padding: 0;
+  margin:auto;
+  text-align: center;
+  border:1px solid #96f2c9;
+  overflow: auto;
+}
+
+::-webkit-scrollbar{
+  width:2px;
+}
+
+
+.DinnerContainer{
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
   box-shadow: inset 1px 0px 9px -1px rgba(20, 60, 90, .9);
@@ -40,10 +60,9 @@ background-color: #ebf5f5;
   margin:auto;
   text-align: center;
   border:1px solid #96f2c9;
-
 }
 
-.ServiceContainer:hover{
+.LunchContainer:hover{
   background-color: #e3d1e8;
   cursor: pointer;
 }
@@ -62,7 +81,12 @@ background-color: #ebf5f5;
 }
 
 .Meals{
-  font-size: 80%;
+  max-width: 100%;
+  word-break: normal;
+  padding:0;
+  margin:5px;
+
+  font-size:16px;
 }
 
 @media (max-width: 600px){

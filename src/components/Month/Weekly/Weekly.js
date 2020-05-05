@@ -6,50 +6,56 @@ import ServiceForm from '../../ServiceForm/ServiceForm';
 import Card from '../../Card/Card';
 
 const Weekly = (props) => {
-const [form, setForm] = useState({
-  id:'',
-  meal:[]
-})
-const [modalShow, setModalShow] = useState(false)
+  const [form, setForm] = useState([])
+  const [modalShow, setModalShow] = useState(0)
 
   const week = getCurrentWeek()
 
-  function submitMeal(newMeal, dayName) {
-
-    setForm(prev =>{
-      return{
+  function submitMeal(newMeal, value) {
+    setForm(prev => {
+      return [
         ...prev,
-        prev.id:dayName,
-        meal:newMeal
-      }
-    })
+        newMeal
+      ]
+    });
+    setModalShow(0)
   }
 
   const closeModalHandler = () => {
-    setModalShow(false)
-
+    setModalShow(0)
   };
+
+  const handleClick = (value) => {
+    setModalShow(value)
+  }
 
   const weekly = week.map((day, i) => {
     const dayName = moment(day).format("ddd");
     const date = day.getDate();
     const currMonth = moment(day).format('MMM')
-    const handleClick = () => {
-      setModalShow(true)
 
-    }
-    // const dayMeals = form.filter((meal) => {
-    //   return meal.day === form.id;
-    // });
+    const formData = form.filter((meal) => {
+      return meal.id === dayName
+    });
+    const mealEntre = formData.map((meal) => {
+      return meal.orders.entre;
+    })
 
-    // const showEntre = dayMeals.map((meal, i) => {
-    //   return meal.entre;
-    // })
+    const mealSideOne = formData.map((meal) => {
+      return meal.orders.sideOne;
+    })
 
-  //  let serviceForm = <ServiceForm onAdd={submitMeal} key={i} dates={modalShow.id}/>;
+    const mealSideTwo = formData.map((meal) => {
+      return meal.orders.sideTwo;
+    })
+
+    const mealOther = formData.map((meal) => {
+      return meal.orders.other;
+    })
+
     return (<Card key={"day" + i}>
-      <Modal show={modalShow} modalClosed={closeModalHandler}>
-        <ServiceForm onAdd={(e)=>submitMeal(e, dayName)} days={form.id}  dates={dayName}/>
+      <Modal show={modalShow === dayName} modalClosed={closeModalHandler}>
+        <ServiceForm onAdd={submitMeal} dayName={dayName} dates={dayName}/>
       </Modal>
       <div className={classes.InputBox}>
         <div >
@@ -58,17 +64,16 @@ const [modalShow, setModalShow] = useState(false)
               {currMonth}
               {date}</p>
           </div>
-          <div onClick={handleClick} className={classes.ServiceContainer}>
-            <p>Lunch</p>
-            <span className={classes.Meals}>
-              <p>
-                {form.value}
-              </p>
-              <p>side</p>
-              <p>desert</p>
-            </span>
+          <div onClick={() => handleClick(dayName)} className={classes.LunchContainer}>
+            <p style={{margin:'5px'}}>Lunch</p>
+            <div className={classes.Meals}>
+              <p>{mealEntre}</p>
+              <p>{mealSideOne}</p>
+              <p>{mealSideTwo}</p>
+              <p>{mealOther}</p>
+            </div>
           </div>
-          <div >
+          <div className={classes.DinnerContainer} >
             <p>Dinner</p>
           </div>
         </div>

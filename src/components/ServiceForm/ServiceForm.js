@@ -57,11 +57,17 @@ const ServiceForm = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const formData = {};
+    const formDatas = {};
     for (let formElementIdentifier in state.orderForm) {
-      formData[formElementIdentifier] = state.orderForm[formElementIdentifier].value
+      formDatas[formElementIdentifier] = state.orderForm[formElementIdentifier].value
     }
-    props.onAdd(formData)
+    const order = {
+      id: props.dayName,
+      orders: formDatas
+    }
+
+    props.onAdd(order);
+
   }
 
   let formElementsArray = [];
