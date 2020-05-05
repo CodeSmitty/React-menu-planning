@@ -6,23 +6,27 @@ import ServiceForm from '../../ServiceForm/ServiceForm';
 import Card from '../../Card/Card';
 
 const Weekly = (props) => {
-  const [modalShow, setModalShow] = useState({entre: "", show: false, id: ''})
-  const [entres, setEntre] = useState([])
+const [form, setForm] = useState({
+  id:'',
+  meal:[]
+})
+const [modalShow, setModalShow] = useState(false)
 
   const week = getCurrentWeek()
 
-  function submitMeal(newMeal) {
-    setEntre(prevMeals => {
-      return [
-        ...prevMeals,
-        newMeal
-      ];
-    });
+  function submitMeal(newMeal, dayName) {
 
+    setForm(prev =>{
+      return{
+        ...prev,
+        prev.id:dayName,
+        meal:newMeal
+      }
+    })
   }
 
   const closeModalHandler = () => {
-    setModalShow({show: false})
+    setModalShow(false)
 
   };
 
@@ -31,19 +35,22 @@ const Weekly = (props) => {
     const date = day.getDate();
     const currMonth = moment(day).format('MMM')
     const handleClick = () => {
-      setModalShow({show: true, id: dayName});
+      setModalShow(true)
+
     }
-    const dayMeals = entres.filter((meal) => {
-      return meal.day === modalShow.id;
-    });
+    // const dayMeals = form.filter((meal) => {
+    //   return meal.day === form.id;
+    // });
 
-    const showEntre = dayMeals.map((meal, i) => {
-      return meal.entre;
-    })
+    // const showEntre = dayMeals.map((meal, i) => {
+    //   return meal.entre;
+    // })
 
-    let serviceForm = <ServiceForm onAdd={submitMeal} key={i} dates={modalShow.id}/>;
-    return (<Card key={day}>
-      <Modal show={modalShow.show} modalClosed={closeModalHandler}>{serviceForm}</Modal>
+  //  let serviceForm = <ServiceForm onAdd={submitMeal} key={i} dates={modalShow.id}/>;
+    return (<Card key={"day" + i}>
+      <Modal show={modalShow} modalClosed={closeModalHandler}>
+        <ServiceForm onAdd={(e)=>submitMeal(e, dayName)} days={form.id}  dates={dayName}/>
+      </Modal>
       <div className={classes.InputBox}>
         <div >
           <div className={classes.DaysContainer}>
@@ -54,8 +61,8 @@ const Weekly = (props) => {
           <div onClick={handleClick} className={classes.ServiceContainer}>
             <p>Lunch</p>
             <span className={classes.Meals}>
-              <p>{showEntre}
-                i
+              <p>
+                {form.value}
               </p>
               <p>side</p>
               <p>desert</p>
