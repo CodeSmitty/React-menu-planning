@@ -1,66 +1,91 @@
-import React, {useState} from 'react';
-import Day from '../Day/Day';
-import Moment from 'react-moment';
-import moment from 'moment';
+import React, {useState} from "react";
+import Day from "../Day/Day";
+import moment from "moment";
 
-function Table(props, year, months) {
+const Week = props => {
+  const [meals, addMeal] = useState([]);
+
+  let week = getCurrentWeek();
+
+  function submitMeal(newMeal) {
+    addMeal(prevMeals => {
+      return [
+        ...prevMeals,
+        newMeal
+      ];
+    });
+  }
+
+  return (<div >
+    <div className="container">
+      {
+        week.map((day, i) => {
+          // ex: Sunday, Monday, Tuesday...
+          const dayName = moment(day).format("dddd");
+          const dayMeals = meals.filter((meal) => {
+            return meal.day === dayName;
+          })
+
+          return (<Day key={"day" + i} dayName={dayName} dayDate={day.getDate()} dayMonth={moment(day).format("MMM")} entres={dayMeals.map((meal, index) => {
+              return meal.entre;
+            })} sides={dayMeals.map((meal, index) => {
+              return meal.side
+            })} dinnerEntres={dayMeals.map((meal, index) => {
+              return meal.dinner_entre
+            })} dinnerSides={dayMeals.map((meal, index) => {
+              return meal.dinner_side
+            })} onSubmit={submitMeal}/>);
+        })
+      }
+    </div>
+  </div>);
+};
+
+function getCurrentWeek() {
   const startOfWeek = moment().startOf("week");
   const endOfWeek = moment().endOf("week");
-  const [meal, setMeal] = useState([]);
 
-  let note = [];
   let week = [];
   let day = startOfWeek;
 
   while (day <= endOfWeek) {
     week.push(day.toDate());
     day = day.clone().add(1, "d");
-  };
-
-
-
-  let handleKeyDown = (event) => {
-    const newValue = event.target.value
-    if (event.keyCode == 13) {}
-
   }
 
-  function submitMeal(newMeal){
-    alert('hello')
-    setMeal(prevMeal =>{
-      return [...prevMeal, newMeal];
-    })
-  }
-
-  return (<div>
-    <div className="container">
-
-        {week.map((day, i) =>{
-          const lunch = moment(day).format('dddd') + '_title';
-
-           return (<Day
-          key={i}
-          id={i}
-          entres={day.entre}
-          onAdded={submitMeal}
-          getCurrDates={day.getDate()}
-          currMonths={moment(day).format('MMM')}
-          dayNames={moment(day).format("dddd")}></Day>);
-
-        })}
-
-
-    </div>
-  </div>)
-
+  return week;
 }
-export default Table;
 
+export default Week;
 
-
-//key={i}
-//id={day.id}
-//titles={lunch}
-//getCurrDates={day.getDate()}
-//val={lunchInput[lunch] || ""}
-//changed={handleChange}//
+// API
+// [
+//   {
+//     date: 2020-04-05,
+//     service_type: lunch,
+//     menu_items: [
+//       {
+//         name: Ham,
+//         type: entree
+//       },
+//       {
+//         name: Eggs,
+//         type: side
+//       }
+//     ]
+//   },
+//   {
+//     date: 2020-04-07,
+//     service_type: dinner,
+//     menu_items: [
+//       {
+//         name: Steak,
+//         type: entree
+//       },
+//       {
+//         name: Potatoes,
+//         type: side
+//       }
+//     ]
+//   }
+// ]

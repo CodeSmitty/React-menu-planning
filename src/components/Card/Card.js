@@ -1,7 +1,3 @@
-import React from 'react';
+const card = props => props.children;
 
-const Card = (props) => {
-  return <div>{props.children}</div>
-};
-
-export default Card;
+export default card;

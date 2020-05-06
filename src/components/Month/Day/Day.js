@@ -1,20 +1,30 @@
-import React from 'react';
-import Moment from 'react-moment';
-import Lunch from './Lunch';
-import Card from '../../Card/Card';
-import Dinner from './Dinner';
+import React from "react";
+import Lunch from "./Lunch";
+import Dinner from "./Dinner";
+import classes from './Day.module.css'
 
-const Day = (props) => (<div className='sun'>
 
-  <Card>
+const Day = props => (
+  <div className={classes.OutsideContainer}>
+  <div className={classes.Sun}>
+    <h2 className={classes.Dates}>
+      {props.dayName} <br />
+      {props.dayMonth} {props.dayDate}
+    </h2>
     <Lunch
-      dayName={props.dayNames}
-      onAdd={props.onAdded}
-      currMonth={props.currMonths}
-      entre={props.entres}
-      getCurrDate={props.getCurrDates}/>
-    <Dinner/>
-  </Card>
-</div>);
+      dayName={props.dayName}
+      entres={props.entres}
+      onAdd={props.onSubmit}
+      sides={props.sides}
+    />
+    <Dinner
+      dayName={props.dayName}
+      dinnerEntres={props.dinnerEntres}
+      dinnerSides={props.dinnerSides}
+      onAdd={props.onSubmit}
+    />
+  </div>
+</div>
+);
 
 export default Day;

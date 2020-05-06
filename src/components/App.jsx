@@ -1,19 +1,15 @@
-import React, {useState} from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import Nav from './Nav';
-import Week from './Month/Week/Week';
-import Login from "./LoginPage/Login"
+import React from "react";
+//import Header from "./Header";
+//import Week from "./Month/Week/Week";
+//import Login from "./LoginPage/Login";
+//import {AuthContext} from '../AuthContext/AuthContext'
+import Weekly from "./Month/Weekly/Weekly";
 
 function App() {
 
-  return (<div >
 
-    <Header/>
-    <Week />
+  return (<Weekly />)
 
-  </div>)
-
-};
+}
 
 export default App;
