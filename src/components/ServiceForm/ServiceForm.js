@@ -61,12 +61,8 @@ const ServiceForm = (props) => {
     for (let formElementIdentifier in state.orderForm) {
       formDatas[formElementIdentifier] = state.orderForm[formElementIdentifier].value
     }
-    const order = {
-      id: props.dayName,
-      orders: formDatas
-    }
 
-    props.onAdd(order);
+    props.onAdd(props.dayName, props.mealType, formDatas);
 
   }
 
