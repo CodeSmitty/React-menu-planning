@@ -12,7 +12,7 @@ function App() {
   return (
   <div>
     <Layout>
-        
+       <Weekly />
     </Layout>
     
   </div>

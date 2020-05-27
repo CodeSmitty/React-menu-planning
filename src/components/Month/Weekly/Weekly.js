@@ -1,24 +1,50 @@
-import React, {useState} from 'react';
+import React, {useState, useReducer, useEffect} from 'react';
 import moment from 'moment';
 import classes from './Weekly.module.css';
 import Modal from '../../UI/Modal/Modal';
 import ServiceForm from '../../ServiceForm/ServiceForm';
 import Card from '../../Card/Card';
+import dispatchReducer from '../../../store/reducers/menuReducer';
+import axios from '../../../axios.orders';
+
 
 const Weekly = (props) => {
   const [form, setForm] = useState({})
   const [modalShow, setModalShow] = useState(0)
+  const {menuReducer, initialState  } = dispatchReducer();
+  const [state, dispatch] = useReducer(menuReducer, initialState);
+  const dates = moment().format("MMM Do YY");
 
   const week = getCurrentWeek()
 
   function submitMeal(day, mealType, meal) {
-    setForm(prev => {
-      prev[day] = prev[day] || {}
-      prev[day][mealType] = meal;
-      return prev;
-    });
+    
+  dispatch({type:'MEAL_SERVICE',
+   date: dates, 
+   service_type:mealType, 
+   service_id: day, meal:meal, 
+   meal_items:[
+     {
+      meal_item_id:'entres', 
+      entre: [meal.entre]
+    }, 
+     {
+       meal_item_id:'sides',
+       side:[meal.sideOne, meal.sideTwo]
+      },
+      {
+        meal_item_id:'deserts',
+        other:[meal.other]
+      }
+    ] 
+  })
     setModalShow(0)
+
   }
+
+
+
+ 
 
   const closeModalHandler = () => {
     setModalShow(0)
@@ -32,6 +58,8 @@ const Weekly = (props) => {
     const dayName = moment(day).format("ddd");
     const date = day.getDate();
     const currMonth = moment(day).format('MMM')
+
+    
 
     return (<Card key={"day" + i}>
       <Modal show={modalShow === dayName + "Lunch"} modalClosed={closeModalHandler}>
@@ -50,10 +78,10 @@ const Weekly = (props) => {
           <div onClick={() => handleClick(dayName + "Lunch")} className={classes.LunchContainer}>
             <p style={{margin:'5px'}}>Lunch</p>
             <div className={classes.Meals}>
-              <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["entre"]}</p>
-              <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["sideOne"]}</p>
-              <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["sideTwo"]}</p>
-              <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["other"]}</p>
+                <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["entre"]}</p>
+                <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["sideOne"]}</p>
+                <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["sideTwo"]}</p>
+                <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["other"]}</p>
             </div>
           </div>
           <div onClick={() => handleClick(dayName + "Dinner")} className={classes.DinnerContainer}>

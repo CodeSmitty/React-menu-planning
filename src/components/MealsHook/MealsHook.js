@@ -4,6 +4,7 @@ import uuid from 'uuid';
 
 
 const date = moment().format("MMM Do YY");
+var timestamp = new Date().getUTCMilliseconds();
 
 const mealService = {
   service_type: {
@@ -56,7 +57,7 @@ const mealsReducer = (state, action) =>{
         entre: action.entre,
         side: action.side,
         id: uuid.v4(),
-        date: date,
+        date: timestamp,
         identifier:action.identifier,
         meal_items:[
           {
