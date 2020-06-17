@@ -1,4 +1,5 @@
 import moment from 'moment';
+import  actionTypes from '../actions/actionTypes';
 import uuid from 'uuid';
 
 
@@ -9,12 +10,15 @@ const initialState = {
         service_type: null,
         service_id: null,
         meal:null,
-        meal_items: [],
+        meal_items: []
 }
+
+
 
 const menuReducer = (state = initialState, action) => {
     switch(action.type){
-        case 'MEAL_SERVICE':
+        case actionTypes.ADD_MENU:
+           
             return{
                 ...state,
                 meal:action.meal,
@@ -24,22 +28,16 @@ const menuReducer = (state = initialState, action) => {
                 meal:action.meal,
                 meal_items: action.meal_items
             }
-
+           
+            
         default:
             return state;
     }
-
+    
 };
 
-const dispatchReducer = () => {
 
-    return {
-      menuReducer:menuReducer,
-      initialState:initialState
-          }
-  
-  
-  
-  }
 
-  export default dispatchReducer;
+
+
+  export default menuReducer;

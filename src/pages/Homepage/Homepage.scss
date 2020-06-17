@@ -1,0 +1,33 @@
+.homepage{
+    margin:200px auto;
+    width: 500px;
+    height:500px;
+    display: flex;
+    justify-content: center;
+  
+
+   
+
+   
+}
+
+.homepage-title{
+    padding:10px 0;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px 80px
+   
+  
+}
+
+.login{
+    
+    background-image: none;
+    text-decoration: none;
+}
+
+.login:hover{
+    background-color: rgb(25, 207, 107);
+}

@@ -9,7 +9,7 @@ class Layout extends Component{
     render(){
         return(
             <Card >
-                <Header />
+              
                 
                 
                 <main className={classes.Layout}>

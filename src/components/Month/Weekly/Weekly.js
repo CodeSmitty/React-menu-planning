@@ -4,70 +4,63 @@ import classes from './Weekly.module.css';
 import Modal from '../../UI/Modal/Modal';
 import ServiceForm from '../../ServiceForm/ServiceForm';
 import Card from '../../Card/Card';
-import dispatchReducer from '../../../store/reducers/menuReducer';
+import {addMenu } from '../../../store/actions/menuActions';
+import { connect } from 'react-redux';
 import axios from '../../../axios.orders';
 
 
-const Weekly = (props) => {
+const Weekly = ({addMenu}) => {
   const [form, setForm] = useState({})
   const [modalShow, setModalShow] = useState(0)
-  const { menuReducer, initialState } = dispatchReducer();
-  const [state, dispatch] = useReducer(menuReducer, initialState);
-  const dates = moment().format("MMM Do YY");
+  
+ 
+  
+ 
+  
 
-  const week = getCurrentWeek()
+  const  week = getCurrentWeek() 
+  function submitMeal( day, mealType, meal, date) {
+    // setForm(prev => {
+    //   prev[day] = prev[day] || {}
+    //   prev[day][mealType] = meal;
+    //   return prev;
+    // });
 
-  function submitMeal(day, mealType, meal) {
-    setForm(prev => {
-      prev[day] = prev[day] || {}
-      prev[day][mealType] = meal;
-      return prev;
-    });
+    const dates = moment(day).format(day, "MMM DD YY");
 
-
-    dispatch({
-      type: 'MEAL_SERVICE',
-      date: dates,
-      service_type: mealType,
-      service_id: day,
-      meal: meal,
-      meal_items: [
-        {
-          meal_item_id: 'entres',
-          entre: [meal.entre]
-        },
-        {
-          meal_item_id: 'sides',
-          side: [meal.sideOne, meal.sideTwo]
-        },
-        {
-          meal_item_id: 'deserts',
-          other: [meal.other]
-        }
-      ]
-    })
+    addMenu(form);
+  setForm(addMenu)
+      console.log(form)
     setModalShow(0)
   }
 
+  
+  
 
 
-  useEffect(() => {
-    axios.post('/meals.json', state)
-      .then(res => {
 
-      })
-      .catch(error => {
-        console.log(error)
-      });
-  })
+  // useEffect(() => {
+  //   axios.post('/meals.json', state)
+  //     .then(res => {
+  //       //console.log(res)
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     });
+  // }, [state])
 
 
   const closeModalHandler = () => {
     setModalShow(0)
+
   };
 
   const handleClick = (value) => {
     setModalShow(value)
+  }
+
+  const onDragOver = (e) => {
+    e.preventDefault();
   }
 
   const weekly = week.map((day, i) => {
@@ -87,14 +80,12 @@ const Weekly = (props) => {
       <div className={classes.InputBox}>
         <div >
           <div className={classes.DaysContainer}>
-            <p>{dayName}
-              {currMonth}
-              {date}</p>
+            <p>{dayName} {currMonth} {date}</p>
           </div>
           <div onClick={() => handleClick(dayName + "Lunch")} className={classes.LunchContainer}>
             <p style={{ margin: '5px' }}>Lunch</p>
             <div className={classes.Meals}>
-              <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["entre"]}</p>
+              <p >{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["entre"]}</p>
               <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["sideOne"]}</p>
               <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["sideTwo"]}</p>
               <p>{form[dayName] && form[dayName]["lunch"] && form[dayName]["lunch"]["other"]}</p>
@@ -125,7 +116,7 @@ function getCurrentWeek() {
 
   let week = [];
   let day = startOfWeek;
-
+  
   while (day <= endOfWeek) {
     week.push(day.toDate());
     day = day.clone().add(1, "d");
@@ -133,4 +124,8 @@ function getCurrentWeek() {
   return week;
 }
 
-export default Weekly;
+const mapDispatchToProps = dispatch=> ({
+  addMenu: (item) => dispatch(addMenu(item))
+})
+
+export default connect(null, mapDispatchToProps)(Weekly);

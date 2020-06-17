@@ -1,18 +1,17 @@
 import React from "react";
 import classes from './Navigation.module.css';
+import { Link } from 'react-router-dom';
 
 function Nav() {
   return (
-    <div>
+    <ul className={classes.Navigation}>
+     
+      <Link  to='/'>Home</Link>
+      <Link to='/recipes'>Recipe</Link>
+      <Link  to='/create'>Crate Menu</Link>
+      <Link to='/archives'>Archives</Link>
       
-        <ul className={classes.Navigation}>
-            {/* <li className={classes.active}><a href="">Home</a></li> */}
-            {/* <li><a href="">Recipes</a></li>
-            <li><a href="">Create Menu</a></li>
-            <li><a href="">Archives</a></li> */}
-        </ul>
-    
-    </div>
+    </ul>
   );
 }
 

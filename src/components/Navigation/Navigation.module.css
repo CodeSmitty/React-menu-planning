@@ -1,7 +1,3 @@
-
-
-
-
 .Navigation {
     margin: 10px 0;
     box-sizing: border-box;
@@ -9,7 +5,7 @@
     width: 100%;
 }
 
-.Navigation a {
+.Navigation a{
     color: rgb(25, 207, 107);
     text-decoration: none;
     width: 100%;
@@ -28,12 +24,16 @@ li{
     color: #40A4C8;
 }
 
+
+
+
+
 @media (min-width: 500px) {
     .Navigation {
-        margin: -33px 0;
+        margin: -40px 30px;
         display: flex;
-        height: 100%;
-        width: auto;
+        height: 50px;
+        width:50%;
         float:right;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
@@ -41,15 +41,17 @@ li{
     .Navigation a {
         color:#000;
         height: 100%;
-        padding: 12px 12px;
-        border-bottom: 4px solid transparent;
+        padding: 15px 0px;
+        border-bottom: 10px solid transparent;
     }
     
     .Navigation a:hover,
     .Navigation a:active,
     .Navigation a.active {
-        background-color: rgb(110, 240, 132);
+        background-color: rgb(191, 240, 193);
         border-radius: 20px;
         color: rgba(1, 32, 27, 0.904);
+        margin: auto 50px;
+        
     }
 }
