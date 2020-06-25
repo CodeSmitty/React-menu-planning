@@ -8,8 +8,8 @@ function Nav() {
      
       <Link  to='/'>Home</Link>
       <Link to='/recipes'>Recipe</Link>
-      <Link  to='/create'>Crate Menu</Link>
-      <Link to='/archives'>Archives</Link>
+      <Link  to='/create'>Crate Menu </Link>
+      <Link to='/archives'> Archives</Link>
       
     </ul>
   );

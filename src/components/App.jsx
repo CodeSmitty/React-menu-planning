@@ -4,8 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 //import Week from "./Month/Week/Week";
 import Login from "./LoginPage/Login";
 //import {AuthContext} from '../AuthContext/AuthContext'
-import Weekly from "./Month/Weekly/Weekly";
-
+//import Weekly from "./Month/Weekly/Weekly";
+import newWeek from '../containers/newWeek/newWeek';
 import HomePage from '../pages/Homepage/Hompage';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <Header />
     <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/create' component={Weekly} />
+          <Route exact path='/create' component={newWeek} />
           <Route path='/login' component={Login} />
         </Switch>
   </div>

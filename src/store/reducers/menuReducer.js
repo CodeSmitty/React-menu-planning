@@ -1,9 +1,9 @@
-import moment from 'moment';
-import  actionTypes from '../actions/actionTypes';
-import uuid from 'uuid';
+//import moment from 'moment';
+import * as actionTypes from '../actions/actionTypes';
+//import uuid from 'uuid';
 
 
-const date = moment().format("MMM Do YY");
+//const date = moment().format("MMM Do YY");
 
 const initialState = { 
         date:null,   
@@ -25,7 +25,6 @@ const menuReducer = (state = initialState, action) => {
                 date: action.date,
                 service_type: action.service_type,
                 service_id: action.service_id,
-                meal:action.meal,
                 meal_items: action.meal_items
             }
            

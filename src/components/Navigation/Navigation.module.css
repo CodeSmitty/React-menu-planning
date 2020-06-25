@@ -45,13 +45,4 @@ li{
         border-bottom: 10px solid transparent;
     }
     
-    .Navigation a:hover,
-    .Navigation a:active,
-    .Navigation a.active {
-        background-color: rgb(191, 240, 193);
-        border-radius: 20px;
-        color: rgba(1, 32, 27, 0.904);
-        margin: auto 50px;
-        
-    }
 }
