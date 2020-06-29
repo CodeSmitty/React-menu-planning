@@ -12,7 +12,9 @@ const NewWeek = ({ week, addWeek }) => {
 
   const [isLoading, setIsloading] = useState(false)
   let [count, setCount] = useState(0)
-
+  let [renderWeeks, setRenderWeek] = useState({
+    key:null
+  });
    
 
    const getCurrentWeek = (start) => {
@@ -33,32 +35,49 @@ const NewWeek = ({ week, addWeek }) => {
 
   let nextWeek = getCurrentWeek()
 
-  let renderWeek = null;
+  
  
 const handleClick = (value) =>{
  setIsloading(true)
- setCount(prev =>{
-   return{
+ setCount(count + 1)
+ setRenderWeek(prev =>{
+   return {
      ...prev,
-     count:count + 1
+     key:count
    }
  })
- console.log(count)
 }
 
+const handlePreviousWeekClick = (value) =>{
+  setIsloading(true)
+  setCount(count - 1)
+  setRenderWeek(prev =>{
+    return {
+      ...prev,
+      key:count
+    }
+  })
+ }
+
+let renderWeek = (<div className='container '><Weekly previous={handlePreviousWeekClick} next={handleClick} week={week} /></div>);
+
 if(isLoading){
-  renderWeek = (<Weekly week={nextWeek} />)
+for(var key in renderWeeks){
+  renderWeek =  (<div className='container'><Weekly previous={handlePreviousWeekClick} next={handleClick} key={key} week={nextWeek} /></div>)
+  return renderWeek;
 }
+}
+
+
 
 
   return (
-    <div>
-      <Weekly week={week}/>
-      {renderWeek}
-      <button className="prevWeek">prev week</button>
-      <button className="nextWeek" onClick={()=>handleClick(count++)}  >
-        next week
-      </button>
+    <div className='outside-container'>
+     
+      
+      {renderWeek}  
+      
+      
     </div>
   );
 };

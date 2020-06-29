@@ -6,7 +6,7 @@ function Header(props) {
 
 
   return (<div className={classes.Header}>
-    <h1 className="beans">
+    <h1 className={classes.Beans}>
       Beans &
       <br/>
       Cornbread

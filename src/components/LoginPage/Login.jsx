@@ -1,26 +1,10 @@
 import React, {useState, useContext} from "react";
 import {AuthContext} from "../../AuthContext/AuthContext";
+import "./login.css";
 
 function Login(props) {
-  const LoginStyle = {
-    position: "auto",
-    width: "100%",
-    height: "703px",
-    backgroundImage: `url('../Images/burgerImg.jpg')`,
-    backgroundSize: "cover"
-  };
 
-  const HeaderStyle = {
-    padding: "0",
-    margin: "0",
-    alignItems: "top",
-    width: "100%",
-    height: "100px",
-    backgroundColor: "transparent",
-    boxSizing: "border-box",
-    boxShadow: "0px 5px 10px 0px #1a1a1a",
-    background: "rgba(20, 0, 0, .5)"
-  }
+
 
   const authContext  = useContext(AuthContext)
   const [isAuthenticated, setIsAuthenticated] = useState({
@@ -60,8 +44,8 @@ authContext.login(newPas =>{
     authContext.login();
   };
 
-  return (<div style={LoginStyle}>
-    <div style={HeaderStyle}>
+  return (<div className='logins'>
+    <div >
       <h1 className="beans">
         Beans &
         <br/>

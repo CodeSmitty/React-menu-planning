@@ -7,7 +7,7 @@ import Card from "../../Card/Card";
 import { addMenu } from "../../../store/actions/menuActions";
 import { connect } from "react-redux";
 //import axios from "../../../axios.orders";
-
+import Button from '../../UI/Button/Button'
 
 
 
@@ -146,7 +146,13 @@ const Weekly = (props) => {
     );
   });
 
-  return (<div className={classes.ContainerOne}>{weekly}
+  return (<div><div className={classes.ContainerOne}>
+  
+    {weekly}
+  
+  </div>
+  <Button btnType='PreviousButton' clicked={props.previous} >&lsaquo;</Button>
+  <Button btnType='Next' clicked={props.next} >&rsaquo;</Button>
   </div>);
 };
 

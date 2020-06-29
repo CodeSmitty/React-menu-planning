@@ -1,7 +1,50 @@
 .Button{
   color:red;
+ 
 }
 
 .Success{
   color:blue;
 }
+
+
+.PreviousButton{
+  width:1px;
+  height:50px;
+  background: none;
+  border: none;
+  font-size: 10vh;
+  color:rgb(32, 32, 39);
+  float: left;
+  padding:0;
+  margin:-460px 100px;
+ 
+}
+
+.Next{
+  width:1px;
+  height:50px;
+  background: none;
+  border: none;
+  font-size: 10vh;
+  color:rgb(32, 32, 39);
+  padding:0;
+  margin: -460px 146px;
+  
+  float:right;
+}
+
+.PreviousButton:focus{
+  outline: none;
+}
+
+.Next:focus{
+  outline: none;
+ 
+}
+.Next:hover, .PreviousButton:hover{
+  color:rgba(1, 49, 58, 0.774);
+  cursor: pointer;  
+
+}
+
