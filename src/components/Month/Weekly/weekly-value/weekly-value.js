@@ -1,9 +1,11 @@
 import React from "react";
 
-const WeeklyValue = ({ handleClick, ...props }) => (
-  <div onClick={handleClick} {...props}>
-    <p>{props.serviceid}</p>
-    <div>{props.children}</div>
+const WeeklyValue = ({ ...props }) => (
+  <div  {...props}>
+    <p>{props.entre}</p>
+    <p>{props.sideone}</p>
+    <p>{props.sidetwo}</p>
+    <p>{props.other}</p>
   </div>
 );
 

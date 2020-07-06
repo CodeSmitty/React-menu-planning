@@ -1,42 +1,29 @@
-//import moment from 'moment';
-import * as actionTypes from '../actions/actionTypes';
-//import uuid from 'uuid';
+import * as actionTypes from "../actions/actionTypes";
 
+import { updateObject } from "../utils/calendarDates";
 
-//const date = moment().format("MMM Do YY");
-
-const initialState = { 
-        date:null,   
-        service_type: null,
-        service_id: null,
-        meal:null,
-        meal_items: []
-}
-
-
-
-const menuReducer = (state = initialState, action) => {
-    switch(action.type){
-        case actionTypes.ADD_MENU:
-           
-            return{
-                ...state,
-                meal:action.meal,
-                date: action.date,
-                service_type: action.service_type,
-                service_id: action.service_id,
-                meal_items: action.meal_items
-            }
-           
-            
-        default:
-            return state;
-    }
-    
+const initialState = {
+  service: [],
+  modalShow: null,
 };
 
+const submitFormSuccess = (state, action) => {
+  // const newOrder = updateObject( action.orderData, { id: action.newOrder } );
+  const updateService = updateObject(action.service);
+  return updateObject(state, {
+    modalShow: 0,
+    service: state.service.concat(updateService),
+  });
+};
 
+const menuReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case actionTypes.ADD_MENU:
+      return submitFormSuccess(state, action);
 
+    default:
+      return state;
+  }
+};
 
-
-  export default menuReducer;
+export default menuReducer;

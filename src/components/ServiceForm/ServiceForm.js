@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
+import {connect } from 'react-redux';
 import Card from '../Card/Card';
 import classes from './ServiceForm.module.css';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input'
+import { addMenu } from '../../store/actions/menuActions';
 
-const ServiceForm = (props) => {
+const ServiceForm = ({addMenu, ...props}) => {
   const [state, setState] = useState({
+    id:props.id,
     orderForm: {
       entre: {
         elementType: 'input',
@@ -42,6 +45,8 @@ const ServiceForm = (props) => {
     }
   })
 
+  
+
   const inputChangedHander = (event, inputIdentifier) => {
     const updatedOrderForm = {
       ...state.orderForm
@@ -53,6 +58,7 @@ const ServiceForm = (props) => {
     updatedFormElement.value = event.target.value;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
     setState({orderForm: updatedOrderForm})
+    
   }
 
   const submitHandler = (e) => {
@@ -60,10 +66,17 @@ const ServiceForm = (props) => {
     const formDatas = {};
     for (let formElementIdentifier in state.orderForm) {
       formDatas[formElementIdentifier] = state.orderForm[formElementIdentifier].value
+      
     }
-
-    props.onAdd(props.dayName, props.mealType, formDatas);
-
+    
+    const formData ={
+      id:props.id,
+      orderData:formDatas
+    }
+    props.onAdd(props.modalShow);
+    
+  addMenu(formData)
+  
   }
 
   let formElementsArray = [];
@@ -73,8 +86,8 @@ const ServiceForm = (props) => {
 
   let input = formElementsArray.map(formElement => (<Input key={formElement.id} elementType={formElement.config.elementType} elementConfig={formElement.config.elementConfig} value={formElement.config.value} changed={(event) => inputChangedHander(event, formElement.id)}/>))
 
-  return (<Card >
-    <div className={classes.Container}>
+  return (<Card   >
+    <div id={props.id}className={classes.Container}>
       <div className={classes.Day}>
         <p>{props.dates}</p>
       </div>
@@ -89,4 +102,8 @@ const ServiceForm = (props) => {
   </Card>)
 }
 
-export default ServiceForm;
+const mapDispatchToProps = dispatch =>({
+  addMenu: (order) => dispatch(addMenu(order))
+})
+
+export default connect(null, mapDispatchToProps)(ServiceForm);

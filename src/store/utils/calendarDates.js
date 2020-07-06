@@ -1,5 +1,15 @@
 import moment from 'moment'
 
+
+export const updateObject = (oldObject, updatedProperties) => {
+  return {
+      ...oldObject,
+      ...updatedProperties
+  };
+}; 
+
+
+
 export const getCurrentWeek = (start) => {
    
     const startOfWeek = moment().startOf('week');

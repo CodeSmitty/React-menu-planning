@@ -12,26 +12,20 @@ const HomePage = () => (
       </header>
     </div>
     <div className="content flex">
-      <h1>What We Do</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-        pretium eleifend magna, eu luctus tortor tempus in. In rhoncus tempus
-        diam, quis eleifend dui congue non. Vestibulum ante ipsum primis in
-        faucibus orci luctus et ultrices posuere cubilia curae; Etiam viverra
-        erat et nibh congue faucibus. Phasellus at ultricies lectus. Morbi
-        fermentum, nibh et accumsan mollis, metus mi condimentum arcu, sed
-        euismod leo nulla in ex. Interdum et malesuada fames ac ante ipsum
-        primis in faucibus. Duis hendrerit, urna suscipit dictum vehicula, neque
-        eros luctus velit, nec malesuada massa nibh quis libero. Proin id turpis
-        massa. Aenean accumsan augue id lacus lacinia hendrerit. Pellentesque
-        dictum massa a auctor auctor. 
-      </p>
-
+      <div className='image'>
       <img
-        className="Image"
+        
         src={poke}
       />
+      </div>
+  <div className='content-text'>
+    <h1>What We Do</h1>
+      <p className='text-one' > Easy Meal Planner </p>
+      <p className='text-two'>Upload Your Favorite Cuisine Photos </p>
+    </div>          
+    <span className='line-bottom'></span>
     </div>
+    
     <div className="login">
       <p>Please Click link to log in</p>
       <Link className="login" to="/login">

@@ -16,7 +16,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  position: relative;
+
   overflow: hidden;
   top: 6em;
 }
@@ -24,10 +24,11 @@ body {
 .homepage > header {
   position: absolute;
 
-  bottom: 0;
+  top: 15em;
   left: 0;
   width: 100%;
-  padding: 20px 10px;
+  height:200px;
+  padding: 0;
   background: inherit;
   background-attachment: fixed;
   overflow: hidden;
@@ -46,7 +47,7 @@ body {
 }
 .homepage > header::after {
   content: "";
-  position: absolute;
+  position: relative;
   top: 20px;
   left: 0;
   width: 100%;
@@ -89,28 +90,54 @@ body {
   margin-left: 10px;
 }
 
-.Image {
-  width: 15em;
-}
-
-.content .flex{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .content {
-  margin: 150px;
+  margin: 155px;
   width: 60%;
   text-align: center;
   align-items: center;
   margin-left: 22%;
-  flex-wrap: wrap;
-  float:left
+  display: inline-block;
+  border-bottom: 2px rgb(2, 59, 85) solid;
+  padding-bottom: 20px;
 
-    .Image{
-        width:100px;
-        height:100px;
-        float:right;
-    }
+  .image {
+  width: 260px;
+    height: 270px;
+    padding: 0;
+    margin: 0 150px;
+    float: right;
+    border-radius: 60%;
+    box-shadow:  0 0 10px 5px rgba(2, 59, 85, 0.4);
+  }
+
+  img {
+    width: 250px;
+    height: 250px;
+    margin: 5px;
+    padding: 0;
+    
+    
+  }
+
+  .content-text {
+    width: 50%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+  }
+
+  .content-text > p{
+    font-size: 20px;
+    color:rgb(2, 59, 85);
+    padding:20px;
+  }
+
+  .text-one{
+    float:left;
+    margin:0 20px;
+  }
+
+  .text-two{
+    float:right;
+    margin-right: -29px;
+  }
 }
