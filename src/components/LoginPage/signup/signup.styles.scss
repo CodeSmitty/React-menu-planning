@@ -1,0 +1,32 @@
+
+
+.signup-box {
+  position: relative;
+  top: 50%;
+  left: 25vh;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  margin:auto;
+  background: rgba(20, 0, 0, .5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(10, 0, 0, .8);
+  border-radius: 10px;
+
+}
+ .login-h2, .login-span {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+
+}
+
+.register-button{
+    padding:20px 0;
+    display: flex;
+}
+
+
+
+
+

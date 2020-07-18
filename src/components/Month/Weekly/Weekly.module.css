@@ -1,48 +1,45 @@
-body {
-  background-color: #f5fff5;
-  margin:0;
-  padding:0;
-
+* {
+  box-sizing: border-box;
 }
 
 .ContainerOne {
   display: flex;
-  
+  justify-content: center;
+  flex-direction: row;
+  margin-right: 90px;
   width: 80%;
-  margin: 250px 150px;
-  background-color: red;
-  
-  box-shadow: 0px 10px 9px rgba(90, 60, 150, 0.9);
-  border-radius: 5px;
+  height: 350px;
+  box-shadow: -5px 5px 8px -4px rgb(119, 118, 118);
 }
 
 .DaysContainer {
   font-family: sans-serif, fantasy;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  background-color: #a3d9c0;
+  background-color: #ffffff;
   width: 100%;
   height: 50px;
   padding: 0;
-  border: 1px solid #eee;
-  border-bottom: 3px solid #96f2c9;
+  border: 1px solid #dfdfdf;
+  border-bottom: 2px solid #636363;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(1, 17, 24);
 }
 
 .LunchContainer {
-  display: block;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-  box-shadow: inset 1px 0px 9px -1px rgba(20, 60, 90, 0.9);
+  border: 1px solid #dfdfdf;
   background-color: #fff;
   width: 100%;
-  height: auto;
-  min-height: 150px;
-  max-height: 150px;
+  height: 150px;
   padding: 0;
   margin: auto;
   text-align: center;
-  border: 1px solid #96f2c9;
   overflow: auto;
+}
+
+.ServiceTitles {
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(1, 17, 24);
 }
 
 ::-webkit-scrollbar {
@@ -50,38 +47,36 @@ body {
 }
 
 .DinnerContainer {
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-  box-shadow: inset 1px 0px 9px -1px rgba(20, 60, 90, 0.9);
   background-color: #fff;
   width: 100%;
   height: 150px;
   padding: 0;
+
   margin: auto;
   text-align: center;
-  border: 1px solid #96f2c9;
+  border: 1px solid #dfdfdf;
   overflow: auto;
 }
 
 .DinnerContainer:hover {
-  background-color: #e3d1e8;
+  background-color: #f7f3f3;
   cursor: pointer;
 }
 
 .LunchContainer:hover {
-  background-color: #e3d1e8;
+  background-color: #f7f3f3;
   cursor: pointer;
 }
 
 .InputBox {
   background-color: #ebf5f5;
   font-family: sans-serif, monospace;
-  flex: 1;
   width: 100%;
-  float: left;
+  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  font-weight: 200;
-  border-radius: 5px;
 }
 
 .Meals {
@@ -89,25 +84,16 @@ body {
   word-break: normal;
   padding: 0;
   margin: 5px;
-
   font-size: 16px;
 }
 
-
-
-@media (max-width: 600px) {
-  .ContainerOne {
-    background-color: #ebf5f5;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-  }
-
-  .InputBox {
-    width: 60%;
-  }
-  .ServiceContainer {
-    color: pink;
-  }
+.MasterContainer {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  margin: auto;
+  margin-top: 30vh;
+  margin-bottom: 20vh;
+  display: flex;
+  justify-content: center;
 }

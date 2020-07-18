@@ -1,9 +1,10 @@
 .Navigation {
-  margin: -40px 250px;
   box-sizing: border-box;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
+  flex-flow: row wrap;
   float: right;
+  margin: auto;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 

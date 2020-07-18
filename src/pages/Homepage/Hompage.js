@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Homepage.scss";
-import poke from '../../Images/poke.png'
-
+import poke from "../../Images/pokebowl.png";
 
 const HomePage = () => (
   <div>
@@ -12,20 +11,17 @@ const HomePage = () => (
       </header>
     </div>
     <div className="content flex">
-      <div className='image'>
-      <img
-        
-        src={poke}
-      />
+      <div className="image">
+        <img alt="Poke Bowls" src={poke} />
       </div>
-  <div className='content-text'>
-    <h1>What We Do</h1>
-      <p className='text-one' > Easy Meal Planner </p>
-      <p className='text-two'>Upload Your Favorite Cuisine Photos </p>
-    </div>          
-    <span className='line-bottom'></span>
+      <div className="content-text">
+        <h1>What We Do</h1>
+        <p className="text-one"> Easy Meal Planner </p>
+        <p className="text-two">Upload Your Favorite Cuisine Photos </p>
+      </div>
+      <span className="line-bottom"></span>
     </div>
-    
+
     <div className="login">
       <p>Please Click link to log in</p>
       <Link className="login" to="/login">

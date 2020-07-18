@@ -1,7 +1,7 @@
 import React from "react";
 
 const WeeklyValue = ({ ...props }) => (
-  <div  {...props}>
+  <div {...props}>
     <p>{props.entre}</p>
     <p>{props.sideone}</p>
     <p>{props.sidetwo}</p>

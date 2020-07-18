@@ -1,30 +1,17 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
+const selectWeek = (state) => state.newWeek;
 
-
-const selectWeek = state => state.newWeek;
-
-const selectMenu = state => state.menu;
-
+const selectMenu = (state) => state.menu;
 
 export const selectCurrentWeek = createSelector(
-    [selectWeek],
-    (newWeek) => newWeek.currWeek
+  [selectWeek],
+  (newWeek) => newWeek.currWeek
 );
 
-export const selectService = createSelector(
-    [selectMenu],
-    menu => menu
-)
+export const selectService = createSelector([selectMenu], (menu) => menu);
 
 export const selectServiceId = createSelector(
-    [selectMenu],
-    (menu) => menu 
-)
-
-
-
-export const menuEntre = createSelector(
-    [selectMenu],
-    menu => (menu.service ?  menu.service.entre: null)
-)
+  [selectMenu],
+  (menu) => menu.service
+);

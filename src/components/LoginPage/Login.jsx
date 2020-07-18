@@ -1,70 +1,49 @@
-import React, {useState, useContext} from "react";
-import {AuthContext} from "../../AuthContext/AuthContext";
+import React from "react";
 import "./login.css";
+import Button from '../UI/Button/Button'
+import {signInWithGoogle } from '../../firebase/firebase.utils';
 
 function Login(props) {
 
 
 
-  const authContext  = useContext(AuthContext)
-  const [isAuthenticated, setIsAuthenticated] = useState({
-    username:'', password:''
-  })
+  
 
-
-
-  const handleChange = (e) => {
-    const {name, value} = e.target;
-    setIsAuthenticated((preLunchState) => {
-      return {
-        ...preLunchState,
-        [name]: value
-      };
-    });
-  };
-  function submitMeal(e, newMeal) {
-e.preventDefault()
-authContext.login(newPas =>{
-  setIsAuthenticated(prevMeals => {
-     return {
-       ...prevMeals,
-       newMeal}
-
-   });
-})
-
-
-    loginHandler()
-    setIsAuthenticated({username:'', password:''})
-
-
-  }
-
-  const loginHandler = () => {
-    authContext.login();
-  };
-
-  return (<div className='logins'>
-    <div >
-      <h1 className="beans">
-        Beans &
-        <br/>
-        Cornbread
-      </h1>
+  return (
+    <div className="logins">
+      <div className="box">
+        <h2 className="login-h2">Login Here</h2>
+        <form>
+          <div className="input-box">
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter Username"
+            ></input>
+          </div>
+          <div className="input-box">
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Password"
+            ></input>
+          </div>
+          <div className='buttons'>
+          <input
+            className="submit-btn"
+            type="submit"
+            name=""
+            value="submit"
+          ></input>
+          <Button btnType="google-signin" clicked={signInWithGoogle}>
+            Sign In With Google
+          </Button>
+          <Button btnType="google-signin" clicked={props.handleClick}>Signup</Button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div className="box">
-      <h2 className="login-h2">Login Here</h2>
-      <form onSubmit={submitMeal}>
-        <div className="input-box">
-          <input type="text" name="username" placeholder="Enter Username" value={isAuthenticated.username} onChange={handleChange}  required=""></input>
-        </div>
-        <div className="input-box">
-          <input type="password" name="password" placeholder="Enter Password" value={isAuthenticated.password} onChange={handleChange} required=""></input>
-        </div>
-        <input className="submit-btn" onSubmit={loginHandler} type="submit" name="" value="submit"></input>
-      </form>
-    </div>
-  </div>);
+  );
 }
 
 export default Login;

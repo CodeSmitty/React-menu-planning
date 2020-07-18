@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import Weekly from "../../components/Month/Weekly/Weekly";
 import "./newWeek.styles.scss";
+//import Week from '../../components/Month/Week/Week'
 
 import { connect } from "react-redux";
-import { selectCurrentWeek } from "../../store/selectors/createWeeks.selectors";
+import { selectService } from "../../store/selectors/createWeeks.selectors";
 import { createStructuredSelector } from "reselect";
-import { addMenu } from "../../store/actions/menuActions";
 
-const NewWeek = ({ week}) => {
-  const [isLoading, setIsloading] = useState(false);
+const NewWeek = ({ serviceData }) => {
   let [count, setCount] = useState(0);
-  let [renderWeeks, setRenderWeek] = useState({
-    key: null,
-  });
 
   const getCurrentWeek = (start) => {
     const startOfWeek = moment().startOf("week").add(count, "w");
@@ -29,74 +25,29 @@ const NewWeek = ({ week}) => {
     return week;
   };
 
-   // useEffect(() => {
-  //   axios
-  //     .post("/meals.json", form)
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [form]);
+  let weeks = getCurrentWeek();
 
-  let nextWeek = getCurrentWeek();
-
-  const handleClick = (value) => {
-    setIsloading(true);
+  const handleNextWeek = (value) => {
     setCount(count + 1);
-    setRenderWeek((prev) => {
-      return {
-        ...prev,
-        key: count,
-      };
-    });
   };
 
   const handlePreviousWeekClick = (value) => {
-    setIsloading(true);
     setCount(count - 1);
-    setRenderWeek((prev) => {
-      return {
-        ...prev,
-        key: count,
-      };
-    });
   };
 
-  let renderWeek = (
-    <div className="container ">
+  return (
+    <div className="outside-container">
       <Weekly
         previous={handlePreviousWeekClick}
-        next={handleClick}
-        week={week}
+        next={handleNextWeek}
+        week={weeks}
       />
     </div>
   );
-
-  if (isLoading) {
-    for (var key in renderWeeks) {
-      renderWeek = (
-        <div className="container">
-          <Weekly
-            previous={handlePreviousWeekClick}
-            next={handleClick}
-            key={key}
-            week={nextWeek}
-          />
-        </div>
-      );
-      return renderWeek;
-    }
-  }
-
-  return <div className="outside-container">{renderWeek}</div>;
 };
 
 const mapStateToProps = createStructuredSelector({
-  week: selectCurrentWeek,
+  serviceData: selectService,
 });
-
-
 
 export default connect(mapStateToProps)(NewWeek);

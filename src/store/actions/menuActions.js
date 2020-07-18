@@ -1,4 +1,4 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from "./actionTypes";
 
 // export const addMenu = (item) =>({
 //     type: actionTypes.ADD_MENU,
@@ -10,9 +10,16 @@ import * as actionTypes from './actionTypes';
 //     payload: {item, id}
 // })
 
-export const addMenu = ( service) => {
-    return{
-        type:actionTypes.ADD_MENU,
-        service:service
-    }
-}
+export const addMenu = (service) => {
+  return {
+    type: actionTypes.ADD_MENU,
+    service: service,
+  };
+};
+
+export const editItem = (service) => {
+  return {
+    type: actionTypes.REMOVE_MENU_ITEM,
+    service: service,
+  };
+};
