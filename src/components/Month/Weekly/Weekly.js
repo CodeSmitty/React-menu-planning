@@ -16,6 +16,7 @@ import {
 } from "../../../store/selectors/createWeeks.selectors";
 import WeeklyValue from "./weekly-value/weekly-value";
 
+
 const Weekly = ({ weekData, service, orderData, ...props }) => {
   const [modalShow, setModalShow] = useState(0);
 

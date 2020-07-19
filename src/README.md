@@ -30,3 +30,16 @@
     #####Recap###
 
         Right now the important things to work on, 1, 2, 3. Everything else was just talk and things that when we discussed would be "New versions, or Updates to current app". It was set up this way to help me learn different things. The programmin, as well as how it looks in certain live enviroments.  
+
+
+    ############Links to work on ##################
+
+
+    1.Form Submit, add data. 
+        There paths, are what make the form work. Can submit, we pull the dispatch from he reducer. Add the form data to the reducer, bring it to the weekly folder with mapStateToProps. 
+
+                src\components\ServiceForm\ServiceForm.js
+                src\components\Month\Weekly\Weekly.js
+                src\store\reducers\menuReducer.js
+                src\store\utils\mealService.utility.js
+                src\containers\newWeek\newWeek.js

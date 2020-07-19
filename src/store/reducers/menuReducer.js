@@ -33,7 +33,6 @@ const editItems = (state, action) => {
   // const checkedState = updatedServices.service.filter((x) => {
   //   return x.id !== action.service.id;
   // });
-
   return updatedState;
 };
 
