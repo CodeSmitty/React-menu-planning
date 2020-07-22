@@ -1,40 +1,36 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import {createStructuredSelector} from 'reselect';
+
 import Header from "./Header/Header";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Footer from "./Footer/Footer";
 import LoginPage from "./LoginPage/LoginPage.component";
 
 import NewWeek from "../containers/newWeek/newWeek";
 import HomePage from "../pages/Homepage/Hompage";
 import { auth, createUserProfileDocument } from "../firebase/firebase.utils";
-
+import { setCurrentUser } from "../store/actions/user.actions";
+import {selectCurrentUser } from "../store/selectors/user.selectors";
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: null,
-    };
-  }
+  
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot((snapShot) => {
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data(),
-            },
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data(),
           });
-          console.log(this.state);
         });
       }
-      this.setState({ currentUser: userAuth });
+      setCurrentUser(userAuth);
     });
   }
 
@@ -45,11 +41,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header  />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/create" component={NewWeek} />
-          <Route path="/login" component={LoginPage} />
+          <Route exact path="/login" render={()=> this.props.currentUser ? (<Redirect to="/" />): (<LoginPage />)} />
         </Switch>
         <Footer />
       </div>
@@ -57,4 +53,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

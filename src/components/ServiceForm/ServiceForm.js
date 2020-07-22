@@ -123,7 +123,12 @@ const ServiceForm = ({addMenu, weekData, editItem,  ...props}) => {
     formElementsArray.push({id: key, config: state.orderForm[key]})
   }
 
-  let input = formElementsArray.map(formElement => (<Input key={formElement.id} elementType={formElement.config.elementType} elementConfig={formElement.config.elementConfig} value={formElement.config.value} changed={(event) => inputChangedHander(event, formElement.id)}/>))
+  let input = formElementsArray.map(formElement => (<Input 
+    key={formElement.id} 
+    elementType={formElement.config.elementType} 
+    elementConfig={formElement.config.elementConfig} 
+    value={formElement.config.value} 
+    changed={(event) => inputChangedHander(event, formElement.id)}/>))
 
   return (<Card   >
     <div id={props.id}className={classes.Container}>

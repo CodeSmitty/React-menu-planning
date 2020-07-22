@@ -20,7 +20,7 @@ const input = (props) => {
     case "textarea":
       inputElement = (
         <textarea
-          className={props.className}
+          className={[props.inputType].join(" ")}
           {...elementConfig}
           value={props.value}
           onChange={props.changed}
@@ -30,7 +30,7 @@ const input = (props) => {
     default:
       inputElement = (
         <input
-          className={props.className}
+          className={[props.inputType].join(" ")}
           {...elementConfig}
           value={props.value}
           onChange={props.changed}

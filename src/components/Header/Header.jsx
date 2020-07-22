@@ -1,10 +1,15 @@
 import React from "react";
+import { useSelector } from 'react-redux';
 import classes from "./Header.module.css";
 import { auth } from "../../firebase/firebase.utils";
 import Nav from "../Navigation/Navigation";
 import { Link } from "react-router-dom";
+import {selectCurrentUser} from '../../store/selectors/user.selectors';
 
-const Header = ({ currentUser }) => {
+
+const Header = () => {
+  const currentUser = useSelector(selectCurrentUser)
+  
   return (
     <div className={classes.Header}>
       <h1 className={classes.Beans}>
