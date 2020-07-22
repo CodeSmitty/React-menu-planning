@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
+import {connect } from 'react-redux';
 import Card from '../Card/Card';
 import classes from './ServiceForm.module.css';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input'
-
-const ServiceForm = (props) => {
+import { addMenu, editItem} from '../../store/actions/menuActions';
+import { createStructuredSelector } from "reselect";
+import {selectService} from '../../store/selectors/createWeeks.selectors'
+const ServiceForm = ({addMenu, weekData, editItem,  ...props}) => {
+  const [isEditing, setIsEditing] = useState(false)
   const [state, setState] = useState({
+   
     orderForm: {
       entre: {
         elementType: 'input',
@@ -42,6 +47,13 @@ const ServiceForm = (props) => {
     }
   })
 
+  
+  const {service} = weekData;
+
+  
+
+  
+
   const inputChangedHander = (event, inputIdentifier) => {
     const updatedOrderForm = {
       ...state.orderForm
@@ -53,34 +65,79 @@ const ServiceForm = (props) => {
     updatedFormElement.value = event.target.value;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
     setState({orderForm: updatedOrderForm})
+    
   }
 
   const submitHandler = (e) => {
     e.preventDefault();
     const formDatas = {};
-    for (let formElementIdentifier in state.orderForm) {
+    for (let formElementIdentifier in state.orderForm) { 
       formDatas[formElementIdentifier] = state.orderForm[formElementIdentifier].value
     }
+    
+    const formData ={
+      id:props.id,
+      week_Id:props.weekId,
+      orderData:formDatas
+    }
 
-    props.onAdd(props.dayName, props.mealType, formDatas);
-
+    // setFormData(prev =>{
+    //   return{
+        
+    //   id:props.id,
+    //   week_Id:props.weekId,
+    //   orderData:formDatas
+    // }})
+    props.onAdd(props.modalShow);
+    
+    addMenu({...formData, formData})
+  setIsEditing(true)
+  
+ 
   }
 
+  const handleEditing = (e)=>{
+    e.preventDefault()
+    const formDatas = {};
+    for (let formElementIdentifier in state.orderForm) { 
+      formDatas[formElementIdentifier] = state.orderForm[formElementIdentifier].value
+    }
+    
+    const formData ={
+      id:props.id,
+      week_Id:props.weekId,
+      orderData:formDatas
+    }
+
+    
+    
+   console.log(editItem(weekData))
+    
+    props.onAdd(props.modalShow);
+   
+  }
+
+  
   let formElementsArray = [];
   for (let key in state.orderForm) {
     formElementsArray.push({id: key, config: state.orderForm[key]})
   }
 
-  let input = formElementsArray.map(formElement => (<Input key={formElement.id} elementType={formElement.config.elementType} elementConfig={formElement.config.elementConfig} value={formElement.config.value} changed={(event) => inputChangedHander(event, formElement.id)}/>))
+  let input = formElementsArray.map(formElement => (<Input 
+    key={formElement.id} 
+    elementType={formElement.config.elementType} 
+    elementConfig={formElement.config.elementConfig} 
+    value={formElement.config.value} 
+    changed={(event) => inputChangedHander(event, formElement.id)}/>))
 
-  return (<Card >
-    <div className={classes.Container}>
+  return (<Card   >
+    <div id={props.id}className={classes.Container}>
       <div className={classes.Day}>
         <p>{props.dates}</p>
       </div>
       <p className={classes.Title}>What's for Lunch Today Chef</p>
       <div className={classes.Form}>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={isEditing ? handleEditing : submitHandler}>
           {input}
           <Button type='submit'>Submit</Button>
         </form>
@@ -89,4 +146,13 @@ const ServiceForm = (props) => {
   </Card>)
 }
 
-export default ServiceForm;
+const mapStateToProps = createStructuredSelector({
+  weekData: selectService
+});
+
+const mapDispatchToProps = dispatch =>({
+  addMenu: (order) => dispatch(addMenu(order)),
+  editItem: (item) =>dispatch(editItem(item))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ServiceForm);

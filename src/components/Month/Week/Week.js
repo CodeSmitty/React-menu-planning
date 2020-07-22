@@ -1,44 +1,53 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Day from "../Day/Day";
 import moment from "moment";
 
-const Week = props => {
+const Week = (props) => {
   const [meals, addMeal] = useState([]);
 
   let week = getCurrentWeek();
 
   function submitMeal(newMeal) {
-    addMeal(prevMeals => {
-      return [
-        ...prevMeals,
-        newMeal
-      ];
+    addMeal((prevMeals) => {
+      return [...prevMeals, newMeal];
     });
   }
 
-  return (<div >
-    <div className="container">
-      {
-        week.map((day, i) => {
+  return (
+    <div>
+      <div className="container">
+        {week.map((day, i) => {
           // ex: Sunday, Monday, Tuesday...
           const dayName = moment(day).format("dddd");
           const dayMeals = meals.filter((meal) => {
             return meal.day === dayName;
-          })
+          });
 
-          return (<Day key={"day" + i} dayName={dayName} dayDate={day.getDate()} dayMonth={moment(day).format("MMM")} entres={dayMeals.map((meal, index) => {
-              return meal.entre;
-            })} sides={dayMeals.map((meal, index) => {
-              return meal.side
-            })} dinnerEntres={dayMeals.map((meal, index) => {
-              return meal.dinner_entre
-            })} dinnerSides={dayMeals.map((meal, index) => {
-              return meal.dinner_side
-            })} onSubmit={submitMeal}/>);
-        })
-      }
+          return (
+            <Day
+              key={"day" + i}
+              dayName={dayName}
+              dayDate={day.getDate()}
+              dayMonth={moment(day).format("MMM")}
+              entres={dayMeals.map((meal, index) => {
+                return meal.entre;
+              })}
+              sides={dayMeals.map((meal, index) => {
+                return meal.side;
+              })}
+              dinnerEntres={dayMeals.map((meal, index) => {
+                return meal.dinner_entre;
+              })}
+              dinnerSides={dayMeals.map((meal, index) => {
+                return meal.dinner_side;
+              })}
+              onSubmit={submitMeal}
+            />
+          );
+        })}
+      </div>
     </div>
-  </div>);
+  );
 };
 
 function getCurrentWeek() {

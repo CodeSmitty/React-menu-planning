@@ -1,86 +1,71 @@
-import React, {useState, useContext} from "react";
-import {AuthContext} from "../../AuthContext/AuthContext";
+import React, {useState} from "react";
+import "./login.css";
+import Button from '../UI/Button/Button'
+import {signInWithGoogle, auth } from '../../firebase/firebase.utils';
 
 function Login(props) {
-  const LoginStyle = {
-    position: "auto",
-    width: "100%",
-    height: "703px",
-    backgroundImage: `url('../Images/burgerImg.jpg')`,
-    backgroundSize: "cover"
-  };
+  const [signinForm, setSigninForm] = useState({
+    email:'',
+    password:''
+  });
 
-  const HeaderStyle = {
-    padding: "0",
-    margin: "0",
-    alignItems: "top",
-    width: "100%",
-    height: "100px",
-    backgroundColor: "transparent",
-    boxSizing: "border-box",
-    boxShadow: "0px 5px 10px 0px #1a1a1a",
-    background: "rgba(20, 0, 0, .5)"
+  const {email, password } = signinForm;
+
+  const handleSubmit = async event =>{
+    event.preventDefault();
+    const { email, password } = signinForm;
+
+    try{
+      await auth.signInWithEmailAndPassword(email, password);
+      setSigninForm({email:"", password:""});
+    } catch(error){
+      console.log(error);
+    }
   }
 
-  const authContext  = useContext(AuthContext)
-  const [isAuthenticated, setIsAuthenticated] = useState({
-    username:'', password:''
-  })
-
-
-
-  const handleChange = (e) => {
+  const handleChange = (e) =>{
     const {name, value} = e.target;
-    setIsAuthenticated((preLunchState) => {
-      return {
-        ...preLunchState,
-        [name]: value
-      };
-    });
-  };
-  function submitMeal(e, newMeal) {
-e.preventDefault()
-authContext.login(newPas =>{
-  setIsAuthenticated(prevMeals => {
-     return {
-       ...prevMeals,
-       newMeal}
 
-   });
-})
-
-
-    loginHandler()
-    setIsAuthenticated({username:'', password:''})
-
-
+    setSigninForm({...signinForm, [name]:value})
   }
+  
 
-  const loginHandler = () => {
-    authContext.login();
-  };
-
-  return (<div style={LoginStyle}>
-    <div style={HeaderStyle}>
-      <h1 className="beans">
-        Beans &
-        <br/>
-        Cornbread
-      </h1>
+  return (
+    <div className="logins">
+      <div className="box">
+        <h2 className="login-h2">Login Here</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-box">
+            <input
+              type="text"
+              name="email"
+              value={email}
+              placeholder="Enter Email"
+              onChange={handleChange}
+            ></input>
+          </div>
+          <div className="input-box">
+            <input
+              placeholder="Enter Password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            ></input>
+            <Button btnType="google-signin" clicked={handleSubmit}>
+              Sign In
+            </Button>
+            <Button type="button" btnType="google-signin" clicked={signInWithGoogle}>
+              Sign In With Google
+            </Button>
+            <Button btnType="google-signin" clicked={props.handleClick}>
+              Signup
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div className="box">
-      <h2 className="login-h2">Login Here</h2>
-      <form onSubmit={submitMeal}>
-        <div className="input-box">
-          <input type="text" name="username" placeholder="Enter Username" value={isAuthenticated.username} onChange={handleChange}  required=""></input>
-        </div>
-        <div className="input-box">
-          <input type="password" name="password" placeholder="Enter Password" value={isAuthenticated.password} onChange={handleChange} required=""></input>
-        </div>
-        <input className="submit-btn" onSubmit={loginHandler} type="submit" name="" value="submit"></input>
-      </form>
-    </div>
-  </div>);
+  );
 }
 
 export default Login;
